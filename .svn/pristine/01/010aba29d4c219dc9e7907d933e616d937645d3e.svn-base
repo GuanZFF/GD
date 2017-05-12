@@ -1,0 +1,11 @@
+package pers.guanzf.common.core.service;
+
+import pers.guanzf.common.core.model.User;
+
+public interface UserService {
+
+	public User getUserByName(String name);
+
+	public int addUser(User user);
+	
+}

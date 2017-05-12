@@ -1,0 +1,11 @@
+package pers.guanzf.common.core.dao;
+
+import java.util.List;
+
+import pers.guanzf.common.core.model.Person;
+
+public interface PersonMapper {
+
+	public List<Person> listPerson();
+	
+}

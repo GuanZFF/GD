@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Login</title>
+<link href="/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="/assets/plugins/sky-forms-pro/skyforms/custom/custom-sky-forms.css" rel="stylesheet">
+<link href="/assets/plugins/sky-forms-pro/skyforms/css/sky-forms.css" rel="stylesheet">
+<link href="/assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+<style>
+	.container {
+		padding-left:0px;
+		padding-right:0px;
+		width: 100%;
+	}
+	.navbar-brand {
+		padding-top: 0;
+		padding-left: 0;
+	}
+	.navbar-default {
+		background-color: white;
+	}
+	.navbar {
+		padding-top: 15px;
+		border: 0;
+	}
+	.navbar .nav>li>a {
+	
+	}
+	.navbar-default #nav>li>a:hover, .navbar-default #nav>li>a:focus {
+		color: #333;
+		background-color: #CDC5BF;
+	}
+	#img-style:HOVER {
+		opacity: 0.9; 
+		color: #fff; 
+		background: rgba(0,0,0,0.8);
+	}
+</style>
+</head>
+<body>
+	<div class="container">
+		<!-- 导航栏设计 -->
+		<div id="header" class="row navbar navbar-default" role="navigation" style="height: 80px; margin-bottom: 0;" >
+			<div class="col-md-1"></div>
+			<div class="navbar-header col-md-1">
+				<a href="/pages/common/BaseHeader.html" class="navbar-brand"><img alt="LOGO" src="/images/logo.jpg" style="width: 50px; height: 50px;"></a>
+			</div>
+			<ul class="nav navbar-nav col-md-7" id="nav">
+				<li><a href="##">名师介绍</a></li>
+				<li><a href="##">成功案例</a></li>
+				<li><a href="##">关于我们</a></li>
+				<li><a href="##">关于我们</a></li>
+				<li><a href="##">分析数据</a></li>
+			</ul>
+			<ul class="nav navbar-nav col-md-2" style="border-right: 0;font-size: 19px;">
+				<li class="col-md-4 text-center"><a href="##"><span class="glyphicon glyphicon-search"></span></a></li>
+				<li class="col-md-4 text-center"><a href="##"><span class="glyphicon glyphicon-user"></span></a></li>
+				<li class="col-md-4 text-center"><a href="##"><span class="glyphicon glyphicon-cog"></span></a></li>
+			</ul>
+			<div class="col-md-1"></div>
+		</div>
+		<div class="row" style="background-color: #C4C4C4; padding: 50px 80px 70px;">
+			<div class="row col-md-8 col-md-offset-2" style="background-color: #EAEAEA; padding: 30px 50px;">
+				<div class="row col-md-7">
+					<form id="sky-form" class="sky-form" style="background-color: #548B54;margin: 20px 0;">
+						<header>请 登 录</header>
+						<fieldset>
+							<section>
+								<div class="row">
+									<label class="input">
+										<i class="icon-append fa fa-user"></i>
+										<input type="text" name="email" placeholder="用户名" id="username">
+									</label>
+								</div>
+							</section>
+							<section>
+								<div class="row">
+									<label class="input">
+										<i class="icon-append fa fa-lock"></i>
+										<input type="password" name="password" placeholder="密码" id="password">
+									</label>
+								</div>
+							</section>
+						</fieldset>
+						<footer>
+							<div class="col-md-6 text-center">
+								<button type="submit" class="btn btn-info">登录</button>
+							</div>
+							<div class="col-md-6 text-center">
+								<button type="button" class="btn btn-u" id="reset">重置</button>
+							</div>
+						</footer>
+					</form>
+				</div>
+				<div class="col-md-5 text-center">
+					<div style="padding-left: 60px;">
+						<h1 class="row text-center">MY ACCOUNT</h1>
+						<hr style="height: 1px; border: none; border-top: 1px dashed #0066CC;">
+						<img alt="头像" src="/images/a1.jpg" class="img-circle" id="userImg">
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="" id="footer">
+			
+		</div>
+	</div>
+</body>
+<script src="/plugins/jquery/jquery.min.js"></script>
+<script src="/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="/plugins/layer-master/src/layer.js"></script>
+<script src="/assets/plugins/sky-forms-pro/skyforms/js/jquery.validate.min.js"></script>
+<script src="/assets/plugins/sky-forms-pro/skyforms/js/jquery-ui.min.js"></script>
+
+<script>
+	$(document).ready(function() {
+		$('#sky-form').validate({
+			rules : {
+				email : 'required',
+				password : 'required'
+			},
+			messages : {
+				email : '用户名不能为空',
+				password : '密码不能为空'
+			},
+			submitHandler : function() {
+				var user = {userName: $('#username').val(), userPassword: $('#password').val()}
+				$.ajax({
+					url : '/usercontroller/login',
+					data : user,
+					dataType : 'json',
+					type : 'post',
+					success : function(result) {
+						if (result.flag == 1) {
+							$(location).attr('href', '/pages/common/BaseHeader.html');
+						} else {
+							layer.msg(result.message, {icon: 6, time: 500});
+						}
+					}
+				});
+			}
+		});
+		$('#reset').on('click', function() {
+			$('#username').val("");
+			$('#password').val("");
+		});
+		$('#username').on('blur', function() {
+			var username = $('#username').val();
+			if (username != null && username != '') {
+				$.ajax({
+					url : '/usercontroller/getuserimgbyusername',
+					data : {username: username},
+					dataType : 'json',
+					type : 'post',
+					success : function(result) {
+						if (result != '' || result != null) {
+							$('#userImg').attr('src', result);
+						}
+					}
+				});
+			}
+		})
+	});
+</script>
+</html>

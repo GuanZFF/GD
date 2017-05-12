@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="/plugins/dataTables/DataTables-1.10.12/media/css/dataTables.bootstrap.min.css" rel="stylesheet">
+<style>
+	.navbar-brand {
+		padding-top: 0;
+		padding-left: 0;
+	}
+	.navbar-default {
+		background-color: white;
+	}
+	.navbar {
+		padding-top: 15px;
+		border: 0;
+	}
+	.navbar .nav>li>a {
+	
+	}
+	.navbar-default #nav>li>a:hover, .navbar-default #nav>li>a:focus {
+		color: #333;
+		background-color: #CDC5BF;
+	}
+	.container {
+		padding-left:0px;
+		padding-right:0px;
+		width: 100%;
+	}
+	.container .row>div>a>img {
+		height: 250px;
+		width: auto;
+	}
+</style>
+</head>
+<body>
+	<div class="container">
+		<div id="header" class="row navbar navbar-default" role="navigation" >
+			<div class="col-md-1"></div>
+			<div class="navbar-header col-md-1">
+				<a href="##" class="navbar-brand"><img alt="LOGO" src="/images/logo.jpg" style="width: 50px; height: 50px;"></a>
+			</div>
+			<ul class="nav navbar-nav col-md-7" id="nav">
+				<li><a href="##">名师介绍</a></li>
+				<li><a href="##">成功案例</a></li>
+				<li><a href="##">关于我们</a></li>
+				<li><a href="##">关于我们</a></li>
+				<li><a href="##">分析数据</a></li>
+			</ul>
+			<ul class="nav navbar-nav col-md-2" style="border-right: 0;font-size: 19px;">
+				<li class="col-md-4 text-center"><a href="##"><span class="glyphicon glyphicon-search"></span></a></li>
+				<li class="col-md-4 text-center"><a href="##"><span class="glyphicon glyphicon-user"></span></a></li>
+				<li class="col-md-4 text-center"><a href="##"><span class="glyphicon glyphicon-cog"></span></a></li>
+			</ul>
+			<div class="col-md-1"></div>
+		</div>
+		<div class="row clearfix">
+			<div class="col-md-12 column">
+				<div class="carousel slide" id="carousel-209080">
+					<!-- 轮转指标 -->
+					<ol class="carousel-indicators">
+						<li class="active" data-slide-to="0" data-target="#carousel-209080"></li>
+						<li data-slide-to="1" data-target="#carousel-209080"></li>
+						<li data-slide-to="2" data-target="#carousel-209080"></li>
+						<li data-slide-to="3" data-target="#carousel-209080"></li>
+					</ol>
+					<!-- 轮转项目 -->
+					<div class="carousel-inner">
+						<div class="item active">
+							<img alt="" src="/images/a1.jpg" class="center-block"/>
+							<div class="carousel-option text-center">图片a1</div>
+						</div>
+						<div class="item">
+							<img alt="" src="/images/a2.jpg" class="center-block"/> 
+							<div class="carousel-option text-center">图片a2</div>
+						</div>
+						<div class="item">
+							<img alt="" src="/images/a3.jpg" class="center-block"/>
+							<div class="carousel-option text-center">图片a3</div>
+						</div>
+						<div class="item">
+							<img alt="" src="/images/a4.jpg" class="center-block"/>
+							<div class="carousel-option text-center">图片a4</div>
+						</div>
+					</div>
+					<!-- 轮转导航 -->
+					<a class="left carousel-control" href="#carousel-209080" data-slide="prev"> 
+						<span class="glyphicon glyphicon-chevron-left"></span>
+					</a> 
+					<a class="right carousel-control" href="#carousel-209080" data-slide="next"> 
+						<span class="glyphicon glyphicon-chevron-right"></span>
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class="row" style="padding-top: 20px;padding-bottom: 20px;">
+			<div class="col-md-1"></div>
+			<div class="col-md-10">
+				<a class="col-md-4 text-center"><img alt="图片" src="/images/a6.jpg" class="img-thumbnail"></a>
+				<a class="col-md-4 text-center"><img alt="图片" src="/images/a5.jpg" class="img-thumbnail"></a>
+				<a class="col-md-4 text-center"><img alt="图片" src="/images/a7.jpg" class="img-thumbnail"></a>
+			</div>
+			<div class="col-md-1"></div>
+		</div>
+		<div class="row" style="background-color: #F2F2F2;padding: 40px;">
+			<div class="row">
+				<h2 style="padding-left: 25px;">热销商品</h2>
+			</div>
+			<hr>
+			<div class="row">
+				<a class="col-md-3 text-center"><img alt="图片" src="/images/a1.jpg" class="img-thumbnail"></a>
+				<a class="col-md-3 text-center"><img alt="图片" src="/images/a1.jpg" class="img-thumbnail"></a>
+				<a class="col-md-3 text-center"><img alt="图片" src="/images/a1.jpg" class="img-thumbnail"></a>
+				<a class="col-md-3 text-center"><img alt="图片" src="/images/a1.jpg" class="img-thumbnail"></a>
+			</div>
+		</div>
+		<hr>
+		<div id="footer" class="row" style="background-color: #5E5E5E">
+			<a class="col-md-4 text-center"><img alt="图片" src="/images/a1.jpg" class="img-thumbnail"></a>
+			<a class="col-md-4 text-center"><img alt="图片" src="/images/a1.jpg" class="img-thumbnail"></a>
+			<a class="col-md-4 text-center"><img alt="图片" src="/images/a1.jpg" class="img-thumbnail"></a>
+		</div>
+	</div>
+</body>
+<script src="/plugins/jquery/jquery.min.js"></script>
+<script src="/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="/plugins/dataTables/DataTables-1.10.12/media/js/jquery.dataTables.min.js"></script>
+
+<script>
+	$(document).ready(function() {
+		$('#carousel-209080').carousel({
+			interval : 2000,
+			pause : "hover"
+		});
+		$.ajax({
+			url : "",
+			type : "post",
+			data : "",
+			dataType : "json",
+			success : function(result) {
+				console.log(result);
+			}
+		});
+	})
+</script>
+
+</html>

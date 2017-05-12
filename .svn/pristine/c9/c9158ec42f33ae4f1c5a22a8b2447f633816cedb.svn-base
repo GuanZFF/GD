@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>测试界面</title>
+<link href="/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="/plugins/dataTables/DataTables-1.10.12/media/css/dataTables.bootstrap.min.css" rel="stylesheet">
+
+<style type="text/css">
+#div1 {
+	width: 100px;
+	height: 300px;
+	border: 1px solid red;
+}
+
+#div2 {
+	width: 100px;
+	height: 600px;
+	border: 1px solid red;
+}
+
+.table {
+	width: 200px;
+	height: 400px;
+	margin-left: 100px;
+}
+
+#image1 {
+	width: 200px;
+	height: 200px;
+}
+
+.navbar-default {
+	background-color: white;
+}
+
+.navbar-default .navbar-nav>li>a {
+	color: #777;
+}
+
+.navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus
+	{
+	color: #333;
+	background-color: #BF3EFF;
+}
+
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:hover,
+	.navbar-default .navbar-nav>.active>a:focus {
+	color: #555;
+	background-color: transparent;
+}
+
+.navbar-default .navbar-nav>.disabled>a, .navbar-default .navbar-nav>.disabled>a:hover,
+	.navbar-default .navbar-nav>.disabled>a:focus {
+	color: #ccc;
+	background-color: transparent;
+}
+</style>
+
+</head>
+
+<body>
+	<!-- BOOTSTRAP框架设计模块 -->
+	<div class="container">
+		<div class="navbar navbar-default" role="navigation">
+			<div class="navbar-header">
+				<a href="##" class="navbar-brand"><img alt="LOGO" src="/images/logo.jpg" style="width: 40px; height: 40px;"></a>
+			</div>
+			<ul class="nav navbar-nav">
+				<li class="active"><a href="##">网站首页</a></li>
+				<li class="dropdown"><a href="##" data-toggle="dropdown" class="dropdown-toggle">系列教程<span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="##">CSS3</a></li>
+						<li><a href="##">Javascript</a></li>
+						<li class="disabled"><a href="##">PHP</a></li>
+					</ul>
+				</li>
+				<li><a href="##">名师介绍</a></li>
+				<li><a href="##">成功案例</a></li>
+				<li><a href="##">关于我们</a></li>
+			</ul>
+		</div>
+		<div class="col-md-12 column navbar navbar-default" role="navigation">
+			<ul class="nav navbar-nav">
+				<li class="active"><a href="##">网站首页</a></li>
+				<li><a href="##">系列教程</a></li>
+				<li><a href="##">名师介绍</a></li>
+				<li><a href="##">成功案例</a></li>
+				<li><a href="##">关于我们</a></li>
+			</ul>
+		</div>
+		<div class="col-md-12 column">
+			<ul class="nav nav-pills">
+				<li class="active"><a>HOME</a></li>
+				<li><a>SVN</a></li>
+				<li><a>IOS</a></li>
+				<li><a>JAVA</a></li>
+				<li><a>PHP</a></li>
+			</ul>
+		</div>
+		<div class="row clearfix">
+			<div class="col-md-12 column">
+				<div class="carousel slide" id="carousel-209080">
+					<!-- 轮转指标 -->
+					<ol class="carousel-indicators">
+						<li class="active" data-slide-to="0" data-target="#carousel-209080"></li>
+						<li data-slide-to="1" data-target="#carousel-209080"></li>
+						<li data-slide-to="2" data-target="#carousel-209080"></li>
+						<li data-slide-to="3" data-target="#carousel-209080"></li>
+					</ol>
+					<!-- 轮转项目 -->
+					<div class="carousel-inner">
+						<div class="item active">
+							<img alt="" src="/images/a1.jpg" class="center-block"/>
+							<div class="carousel-option text-center">图片a1</div>
+						</div>
+						<div class="item">
+							<img alt="" src="/images/a2.jpg" class="center-block"/> 
+							<div class="carousel-option text-center">图片a2</div>
+						</div>
+						<div class="item">
+							<img alt="" src="/images/a3.jpg" class="center-block"/>
+							<div class="carousel-option text-center">图片a3</div>
+						</div>
+						<div class="item">
+							<img alt="" src="/images/a4.jpg" class="center-block"/>
+							<div class="carousel-option text-center">图片a4</div>
+						</div>
+					</div>
+					<!-- 轮转导航 -->
+					<a class="left carousel-control" href="#carousel-209080" data-slide="prev"> 
+						<span class="glyphicon glyphicon-chevron-left"></span>
+					</a> 
+					<a class="right carousel-control" href="#carousel-209080" data-slide="next"> 
+						<span class="glyphicon glyphicon-chevron-right"></span>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+<script src="/plugins/jquery/jquery.min.js"></script>
+<script src="/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="/plugins/dataTables/DataTables-1.10.12/media/js/jquery.dataTables.min.js"></script>
+
+<script>
+	$(document).ready(function() {
+		$('#carousel-209080').carousel({
+			interval : 1000,
+			pause : "hover"
+		})
+		/* $('.test').affix({
+			offset : {
+				top : function() {
+					console.log("jjj");
+				}
+			}
+		}); */
+		var table;
+		var data = {};
+		data.produceName = "gaunzf";
+		data.produceType = "jj";
+		function registerProduce(produce) {
+			var baseRequest = {};
+			baseRequest.data = produce;
+			$.ajax({
+				url : "/PC/registerproduce",
+				type : "post",
+				data : baseRequest,
+				datatype : "json",
+				success : function(result) {
+					console.log(result);
+				}
+			});
+		}
+		/* ajax访问后台数据 */
+		function sendRequest(data) {
+			$.ajax({
+				url : "/PC/readproduceallinfo",
+				type : "post",
+				data : data,
+				datatype : "json",
+				success : function(result, textStatus, jqXHR) {
+					if (result) {
+						console.log(result);
+						loadTables(result.data);
+					} else {
+
+					}
+				}
+			});
+		}
+		/* 初始化dataTable数据 */
+		function loadTables(data) {
+			var i = 0;
+			table = $(".table").dataTable({
+				data : data,
+				searching : false,
+				paging : false,
+				info : false,
+				ordering : false,
+				columns : [ {
+					"render" : function(data) {
+						return i++;
+					}
+				}, {
+					"data" : "produceName",
+				} ]
+			});
+			table.on('click', function(data) {
+				alert("guanzf");
+			});
+		}
+	});
+</script>
+</html>

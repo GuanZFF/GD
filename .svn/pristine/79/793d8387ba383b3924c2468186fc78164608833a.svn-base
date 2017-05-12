@@ -1,0 +1,25 @@
+package pers.guanzf.common.util;
+
+import org.apache.log4j.Logger;
+import org.springframework.util.StringUtils;
+
+public class StringUtil {
+	
+	private static final Logger LOGGER = Logger.getLogger(StringUtil.class);
+
+	/**
+	 * 验证电话号码
+	 */
+	public static boolean verifyPhone(String phone) {
+		String regex = "^((13[0-9])|(15[0-9])|(18[0-9]))\\d{8}$";
+		if (StringUtils.isEmpty(phone)) {
+			LOGGER.info("Phone为空");
+			return false;
+		}
+		return phone.matches(regex);
+	}
+	
+	public static void main(String[] args) {
+		System.out.println(verifyPhone("18255408516"));
+	}
+}

@@ -1,0 +1,63 @@
+package pers.guanzf.common.core.service.impl;
+
+import java.util.List;
+
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
+import org.springframework.util.StringUtils;
+
+import pers.guanzf.common.core.dao.ProduceMapper;
+import pers.guanzf.common.core.model.Produce;
+import pers.guanzf.common.core.model.ProduceExample;
+import pers.guanzf.common.core.service.ProduceService;
+
+@Service
+public class ProduceServiceImpl implements ProduceService {
+
+	private static final Logger LOGGER = Logger.getLogger(ProduceServiceImpl.class);
+	
+	@Autowired
+	private ProduceMapper produceMapper;
+	
+	@Override
+	public List<Produce> listProduce() {
+		ProduceExample example = new ProduceExample();
+		return produceMapper.selectByExample(example);
+	}
+
+	@Override
+	public Produce getProduceInfo(String produceId) {
+		if (StringUtils.isEmpty(produceId)) {
+			LOGGER.info("ID为空");
+			return null;
+		}
+		ProduceExample example = new ProduceExample();
+		ProduceExample.Criteria criteria = example.createCriteria();
+		criteria.andProduceIdEqualTo(produceId);
+		List<Produce> produces = produceMapper.selectByExample(example);
+		if (CollectionUtils.isEmpty(produces)) {
+			LOGGER.info("ID没有对应的信息");
+			return null;
+		}
+		return produces.get(0);
+	}
+
+	@Override
+	public int deleteProduceInfo(String produceId) {
+		if (StringUtils.isEmpty(produceId)) {
+			LOGGER.info("ID为空");
+			return -1;
+		}
+		ProduceExample example = new ProduceExample();
+		ProduceExample.Criteria criteria = example.createCriteria();
+		criteria.andProduceIdEqualTo(produceId);
+		int result = produceMapper.deleteByExample(example);
+		if (result != 1) {
+			LOGGER.info("删除商品信息有误");
+		}
+		return result;
+	}
+
+}

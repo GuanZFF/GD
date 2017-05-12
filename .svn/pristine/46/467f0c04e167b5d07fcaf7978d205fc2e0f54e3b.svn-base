@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>测试界面</title>
+<link href="/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="/plugins/dataTables/DataTables-1.10.12/media/css/dataTables.bootstrap.min.css" rel="stylesheet">
+
+<style type="text/css">
+	#div1 {
+		width:100px;
+		height: 300px;
+		border: 1px solid red;
+	}
+	#div2 {
+		width:100px;
+		height: 600px;
+		border: 1px solid red;
+	}
+	.table {
+		width: 200px;
+		height: 400px;
+		margin-left: 100px;
+	}
+</style>
+
+</head>
+
+<body>
+	<div class="input-group">
+		<span class="input-group-addon">@</span> 
+		<input class="from-control" type="text" placeholder="test">
+	</div>
+	<table class="table table-striped table-bordered table-hover">
+		<thead>
+			<tr>
+				<th>序号</th>
+				<th>姓名</th>
+			</tr>
+		</thead>
+		<tbody></tbody>
+	</table>
+</body>
+
+<script src="/plugins/jquery/jquery.min.js"></script>
+<script src="/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="/plugins/dataTables/DataTables-1.10.12/media/js/jquery.dataTables.min.js"></script>
+
+<script>
+	$(document).ready(function() {
+		var table;
+		sendRequest(null);
+		/* ajax访问后台数据 */
+		function sendRequest(data) {
+			$.ajax({
+				url : "/PC/readproduceallinfo",
+				type : "post",
+				data : data,
+				datatype : "json",
+				success : function(result, textStatus, jqXHR) {
+					if (result) {
+						console.log(result);
+						loadTables(result.data);
+					} else {
+						
+					}
+				}
+			});
+		}
+		/* 初始化dataTable数据 */
+		function loadTables(data) {
+			var i = 0;
+			table = $(".table").dataTable({
+				data : data,
+				searching : false,
+				paging : false,
+				info : false,
+				ordering : false,
+				columns : [{
+					"render" : function(data) {
+						return i++;
+					}
+				},{
+					"data" : "produceName",
+				}]
+			});
+			table.on('click', function(data) {
+				alert("guanzf");
+			});
+		}
+	});
+</script>
+</html>

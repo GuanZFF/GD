@@ -1,0 +1,40 @@
+#INFO表示日志输出的最低级别
+log4j.rootLogger=INFO, Console
+
+#表示控制台日志信息输出
+log4j.appender.Console=org.apache.log4j.ConsoleAppender
+#输出的方式为灵活输出
+log4j.appender.Console.layout=org.apache.log4j.PatternLayout
+#灵活配置输出日志的格式
+log4j.appender.Console.layout.ConversionPattern=%d [%t] %-5p [%c] - %m%n
+
+
+#-----------------------------------日志输出详情解释-------------------------------------
+
+#--------日志信息输出目的地---------
+#org.apache.log4j.ConsoleAppender(控制台) 
+#org.apache.log4j.FileAppender(文件) 
+#org.apache.log4j.DailyRollingFileAppender(每天产生一个日志文件) 
+#org.apache.log4j.RollingFileAppender(文件到达指定大小时产生一个新文件) 
+#org.apache.log4j.WriterAppender(将日志信息以流格式发送到任何地方) 
+
+#--------layout的种类---------
+#org.apache.log4j.HTMLLayout(以HTML表格形式布局) 
+#org.apache.log4j.SimpleLayout(包含日志信息的级别和信息字符串) 
+#org.apache.log4j.TTCCLayout(包含日志产生的时间、线程、类别等等信息) 
+#org.apache.log4j.PatternLayout(可以灵活地指定布局模式) 
+
+#%m 输出代码中指定的消息 
+#%p 输出优先级,即DEBUG，INFO，WARN，ERROR，FATAL 
+#%r 输出自应用启动到输出该log信息耗费的毫秒数 
+#%c 输出所属的类目,通常就是所在类的全名 
+#%t 输出产生该日志事件的线程名 
+#%n 输出一个回车换行符,Windows为"rn"，Unix为"n" 
+#%d 输出日志时间,比如:%d{yyyy MMM dd HH:mm:ss,SSS},输出:2007年5月17日 19:30:00,000 
+#%l 输出日志事件的发生位置,包括类目名、发生的线程,以及在代码中的行数
+
+#---------日志输出的方式包含System.out/System.err------------
+#log4j.appender.CONSOLE.Target=System.out 
+
+#---------日志输出的最低级别----------[Threshold 表示"门槛"]
+#log4j.appender.Threshold=DEBUG 

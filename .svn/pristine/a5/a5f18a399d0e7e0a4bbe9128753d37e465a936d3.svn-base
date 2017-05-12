@@ -1,0 +1,8 @@
+package pers.guanzf.technology.quartz;
+
+public class TimedTask {
+
+	public void test() {
+		
+	}
+}

@@ -1,0 +1,5 @@
+package pers.guanzf.common.constants;
+
+public class AppConfig {
+
+}

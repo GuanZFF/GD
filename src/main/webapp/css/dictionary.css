@@ -1,0 +1,111 @@
+#tables, #left, #right, #add{
+    border: 1px solid #95a5a6;
+}
+
+#tables {
+    background-color:#95a5a6;
+    margin: auto;
+    padding: 10px;
+    height: 500px;
+    margin-top: -20px;
+}
+
+#left {
+    background-color: white;
+    margin: 10px;
+    width: 205px;
+    height: 460px;
+    float: left;
+}
+
+#right {
+    background-color: white;
+    margin: 10px;
+    width: 620px;
+    height: 460px;
+    float: left;
+    overflow: auto;
+}
+
+#footer {
+    margin-top: 20px;
+}
+
+/*导航栏设置*/
+* {margin: 0; padding: 0;}
+/*nav styles*/
+.nav ul {
+    background: white;/*  border-top: 6px solid hsl(180, 40%, 60%); */
+    width: 200px; margin: 5em auto;
+}
+.nav ul li {
+    list-style-type: none;
+    /*relative positioning for list items along with overflow hidden to contain the overflowing ripple*/
+    position: relative;
+    overflow: hidden;
+}
+.nav ul li a {
+    font: normal 14px/28px Montserrat;
+    color: hsl(180, 40%, 40%);
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+    cursor: pointer; /*since the links are dummy without href values*/
+    /*prevent text selection*/
+    user-select: none;
+    /*static positioned elements appear behind absolutely positioned siblings(.ink in this case) hence we will make the links relatively positioned to bring them above .ink*/
+    position: relative;
+}
+
+/*.ink styles - the elements which will create the ripple effect. The size and position of these elements will be set by the JS code. Initially these elements will be scaled down to 0% and later animated to large fading circles on user click.*/
+.nav .ink {
+    display: block;
+    position: absolute;
+    background: hsl(180, 40%, 80%);
+    border-radius: 100%;
+    transform: scale(0);
+}
+/*animation effect*/
+.nav .ink.animate {animation: ripple 0.65s linear;}
+@keyframes ripple {
+    /*scale the element to 250% to safely cover the entire link and fade it out*/
+    100% {opacity: 0; transform: scale(2.5);}
+}
+
+/*表格样式设置*/
+.demo{width:600px; margin:60px auto 10px auto; margin-top:10px; font-size:16px}
+.table {border-collapse: collapse !important;width: 100%;max-width: 100%;margin-bottom: 20px;}
+.table td,.table th {background-color: #fff !important;}
+.table-bordered th,.table-bordered td {border: 1px solid #ddd !important;}
+.table tr td {padding: 8px;line-height: 1.42857143;vertical-align: middle;border-bottom: 1px solid #ddd;}
+.table tr:hover {background-color: #f5f5f5;}
+
+/*添加界面设置*/
+
+#add {
+    background-color: white;
+    margin: 10px;
+    width: 230px;
+    height: 460px;
+    float: left;
+    padding: 10px;
+}
+
+input{
+    margin-bottom: 10px !important;
+    height: 40px;
+    width:180px;
+    font-size: 20px !important;
+    border-radius: 5px !important;
+    background-color: white;
+}
+
+#sub{
+    font-size:20px;
+    font-style:oblique;
+    width: 180px;
+    height: 40px;
+    background-color: #95a5a6;
+    border: 2px solid #fff4fd;
+    border-radius: 15px !important;
+}

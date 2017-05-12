@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="/assets/plugins/sky-forms-pro/skyforms/custom/custom-sky-forms.css" rel="stylesheet">
+<link href="/assets/plugins/sky-forms-pro/skyforms/css/sky-forms.css" rel="stylesheet">
+<link href="/assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4 col-md-offset-2" style="margin-top: 100px;border: 1px solid red; background-color: #DBDBDB;">
+				<div class="row col-md-10 col-md-offset-1">
+					<form id="sky-form" class="sky-form" style="background-color: #548B54;margin: 20px 0;">
+						<fieldset>
+							<section>
+								<div class="row">
+									<label class="input">
+										<i class="icon-append fa fa-user"></i>
+										<input type="text" name="email" placeholder="用户名" id="username">
+									</label>
+								</div>
+							</section>
+							<section>
+								<div class="row">
+									<label class="input">
+										<i class="icon-append fa fa-lock"></i>
+										<input type="password" name="password" placeholder="密码" id="password">
+									</label>
+								</div>
+							</section>
+						</fieldset>
+						<footer>
+							<div class="col-md-6">
+								<button type="submit" class="btn btn-info">登录</button>
+							</div>
+							<div class="col-md-6">
+								<button type="button" class="btn btn-u" id="reset">重置</button>
+							</div>
+						</footer>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script src="/plugins/jquery/jquery.min.js"></script>
+<script src="/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="/plugins/layer-master/src/layer.js"></script>
+<script src="/assets/plugins/sky-forms-pro/skyforms/js/jquery.validate.min.js"></script>
+<script src="/assets/plugins/sky-forms-pro/skyforms/js/jquery-ui.min.js"></script>
+
+<script>
+	$(document).ready(function() {
+		$('#sky-form').validate({
+			rules : {
+				email : 'required',
+				password : 'required'
+			},
+			messages : {
+				email : '用户名不能为空',
+				password : '密码不能为空'
+			},
+			submitHandler : function() {
+				var user = {userName: $('#username').val(), userPassword: $('#password').val()}
+				console.log(user);
+				$.ajax({
+					url : '/usercontroller/login',
+					data : user,
+					dataType : 'json',
+					type : 'get',
+					success : function(result) {
+						if (result.flag == 1) {
+							$(location).attr('href', '/pages/common/BaseHeader.html');
+						} else {
+							layer.msg(result.message);
+						}
+					}
+				});
+			}
+		});
+		$('#reset').on('click', function() {
+			$('#username').val("");
+			$('#password').val("");
+		});
+	});
+</script>
+</html>

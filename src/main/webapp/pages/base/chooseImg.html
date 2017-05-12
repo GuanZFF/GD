@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="/plugins/dataTables/DataTables-1.10.12/media/css/dataTables.bootstrap.min.css" rel="stylesheet">
+<link href="/assets/plugins/sky-forms-pro/skyforms/css/sky-forms.css" rel="stylesheet">
+<link href="/assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+<style>
+</style>
+</head>
+<body>
+	<div class="container">
+		<div class="row text-center" style="padding: 20px;">
+			<div class="row">
+				<div class="col-xs-4">
+					<img alt="头像" src="/images/a1.jpg" class="col-xs-10 col-xs-offset-2 img-thumbnail">
+				</div>
+				<div class="col-xs-4 text-center">
+					<img alt="头像" src="/images/a2.jpg" class="col-xs-10 col-xs-offset-1 img-thumbnail">
+				</div>
+				<div class="col-xs-4">
+					<img alt="头像" src="/images/a3.jpg" class="col-xs-10 img-thumbnail">
+				</div>
+			</div>
+			<hr style="height:1px;border:none;border-top:1px dashed #CFCFCF;">
+			<div class="row">
+				<div class="col-xs-4">
+					<img alt="头像" src="/images/a4.jpg" class="col-xs-10 col-xs-offset-2 img-thumbnail">
+				</div>
+				<div class="col-xs-4 text-center">
+					<img alt="头像" src="/images/a5.jpg" class="col-xs-10 col-xs-offset-1 img-thumbnail">
+				</div>
+				<div class="col-xs-4">
+					<img alt="头像" src="/images/a6.jpg" class="col-xs-10 img-thumbnail">
+				</div>
+			</div>
+		</div>
+		<!-- <div class="row">
+			<div class="col-xs-6">
+				<button id="yes" class="btn btn-info col-xs-12" style="padding: 10px;">确定</button>
+			</div>
+			<div class="col-xs-6">
+				<button id="no" class="btn btn-info col-xs-12" style="padding: 10px;">取消</button>
+			</div>
+		</div> -->
+	</div>
+</body>
+<script src="/plugins/jquery/jquery.min.js"></script>
+<script src="/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="/plugins/dataTables/DataTables-1.10.12/media/js/jquery.dataTables.min.js"></script>
+<script src="/plugins/layer-master/src/layer.js"></script>
+<script src="/assets/plugins/sky-forms-pro/skyforms/js/jquery.validate.min.js"></script>
+
+<script>
+	$(document).ready(function() {
+		$.ajax({
+			url: '/usercontroller/getuserimg',
+			dataType: 'json',
+			type: 'get',
+			success: function(result) {
+				if (result != null && result != '') {
+					for (var i = 0; i < result.length; i++) {
+						$($('img').get(i)).attr('src', result[i]);
+					}
+				}
+			}
+		});
+		$('img').on('click', function() {
+			var imgUrl = $(this).attr('src');
+			closeWindow(imgUrl);
+		});
+		function closeWindow(param) {
+			parent.document.getElementById('img').src = param;
+			var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
+			parent.layer.close(index);
+		}
+	});
+</script>
+</html>

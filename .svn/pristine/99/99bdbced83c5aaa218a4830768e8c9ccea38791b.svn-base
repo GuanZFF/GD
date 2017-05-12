@@ -1,0 +1,61 @@
+package pers.guanzf.common.core.controller;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.AuthenticationException;
+import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.subject.Subject;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.util.ObjectUtils;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import pers.guanzf.common.core.model.User;
+import pers.guanzf.common.core.service.UserService;
+import pers.guanzf.common.sys.base.model.BaseResponseBody;
+import pers.guanzf.common.sys.kernel.MD5;
+import pers.guanzf.common.util.UUIDUtil;
+
+@Controller
+@RequestMapping("/usercontroller")
+public class UserController {
+	
+	@Autowired
+	private UserService userService;
+	
+	@RequestMapping("adduser")
+	@ResponseBody
+	public BaseResponseBody addUser(User user) {
+		if (ObjectUtils.isEmpty(user)) {
+			return new BaseResponseBody(0, "参数错误");
+		}
+		User user1 = userService.getUserByName(user.getUserName());
+		if (!ObjectUtils.isEmpty(user1)) {
+			return new BaseResponseBody(0, "用户名已存在");
+		}
+		user.setUserId(UUIDUtil.randomID());
+		user.setUserPassword(MD5.encode16(user.getUserPassword()));
+		int result = userService.addUser(user);
+		if (result == 1) {
+			return new BaseResponseBody(1, "用户注册成功");
+		} else {
+			return new BaseResponseBody(0, "注册失败");
+		}
+	}
+	
+	@RequestMapping("/login")
+	@ResponseBody
+	public BaseResponseBody login(HttpServletRequest request, User user) {
+		Subject subject = SecurityUtils.getSubject();
+		UsernamePasswordToken token = new UsernamePasswordToken(user.getUserName(), MD5.encode16(user.getUserPassword()));
+		try {
+			subject.login(token);
+		} catch (AuthenticationException ex) {
+			return new BaseResponseBody(0, "用户名或密码错误");
+		}
+		return new BaseResponseBody(1, "登录成功");
+	}
+
+}
