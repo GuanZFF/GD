@@ -15,6 +15,7 @@ public final class Constants {
 		public final static String LABEL = "label";// 连接标识
 		public final static String ID = "identification";// 连接独立标识
 		public final static String TEST = "test";
+		public final static String REGISTERDEAL = "registerdeal";
 	}
 
 }

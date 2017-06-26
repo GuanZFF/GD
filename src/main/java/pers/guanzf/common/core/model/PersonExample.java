@@ -335,6 +335,136 @@ public class PersonExample {
             return (Criteria) this;
         }
 
+        public Criteria andPersonTypeIsNull() {
+            addCriterion("PERSON_TYPE is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPersonTypeIsNotNull() {
+            addCriterion("PERSON_TYPE is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPersonTypeEqualTo(Integer value) {
+            addCriterion("PERSON_TYPE =", value, "personType");
+            return (Criteria) this;
+        }
+
+        public Criteria andPersonTypeNotEqualTo(Integer value) {
+            addCriterion("PERSON_TYPE <>", value, "personType");
+            return (Criteria) this;
+        }
+
+        public Criteria andPersonTypeGreaterThan(Integer value) {
+            addCriterion("PERSON_TYPE >", value, "personType");
+            return (Criteria) this;
+        }
+
+        public Criteria andPersonTypeGreaterThanOrEqualTo(Integer value) {
+            addCriterion("PERSON_TYPE >=", value, "personType");
+            return (Criteria) this;
+        }
+
+        public Criteria andPersonTypeLessThan(Integer value) {
+            addCriterion("PERSON_TYPE <", value, "personType");
+            return (Criteria) this;
+        }
+
+        public Criteria andPersonTypeLessThanOrEqualTo(Integer value) {
+            addCriterion("PERSON_TYPE <=", value, "personType");
+            return (Criteria) this;
+        }
+
+        public Criteria andPersonTypeIn(List<Integer> values) {
+            addCriterion("PERSON_TYPE in", values, "personType");
+            return (Criteria) this;
+        }
+
+        public Criteria andPersonTypeNotIn(List<Integer> values) {
+            addCriterion("PERSON_TYPE not in", values, "personType");
+            return (Criteria) this;
+        }
+
+        public Criteria andPersonTypeBetween(Integer value1, Integer value2) {
+            addCriterion("PERSON_TYPE between", value1, value2, "personType");
+            return (Criteria) this;
+        }
+
+        public Criteria andPersonTypeNotBetween(Integer value1, Integer value2) {
+            addCriterion("PERSON_TYPE not between", value1, value2, "personType");
+            return (Criteria) this;
+        }
+
+        public Criteria andPersonSexIsNull() {
+            addCriterion("PERSON_SEX is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPersonSexIsNotNull() {
+            addCriterion("PERSON_SEX is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPersonSexEqualTo(String value) {
+            addCriterion("PERSON_SEX =", value, "personSex");
+            return (Criteria) this;
+        }
+
+        public Criteria andPersonSexNotEqualTo(String value) {
+            addCriterion("PERSON_SEX <>", value, "personSex");
+            return (Criteria) this;
+        }
+
+        public Criteria andPersonSexGreaterThan(String value) {
+            addCriterion("PERSON_SEX >", value, "personSex");
+            return (Criteria) this;
+        }
+
+        public Criteria andPersonSexGreaterThanOrEqualTo(String value) {
+            addCriterion("PERSON_SEX >=", value, "personSex");
+            return (Criteria) this;
+        }
+
+        public Criteria andPersonSexLessThan(String value) {
+            addCriterion("PERSON_SEX <", value, "personSex");
+            return (Criteria) this;
+        }
+
+        public Criteria andPersonSexLessThanOrEqualTo(String value) {
+            addCriterion("PERSON_SEX <=", value, "personSex");
+            return (Criteria) this;
+        }
+
+        public Criteria andPersonSexLike(String value) {
+            addCriterion("PERSON_SEX like", value, "personSex");
+            return (Criteria) this;
+        }
+
+        public Criteria andPersonSexNotLike(String value) {
+            addCriterion("PERSON_SEX not like", value, "personSex");
+            return (Criteria) this;
+        }
+
+        public Criteria andPersonSexIn(List<String> values) {
+            addCriterion("PERSON_SEX in", values, "personSex");
+            return (Criteria) this;
+        }
+
+        public Criteria andPersonSexNotIn(List<String> values) {
+            addCriterion("PERSON_SEX not in", values, "personSex");
+            return (Criteria) this;
+        }
+
+        public Criteria andPersonSexBetween(String value1, String value2) {
+            addCriterion("PERSON_SEX between", value1, value2, "personSex");
+            return (Criteria) this;
+        }
+
+        public Criteria andPersonSexNotBetween(String value1, String value2) {
+            addCriterion("PERSON_SEX not between", value1, value2, "personSex");
+            return (Criteria) this;
+        }
+
         public Criteria andPersonPasswordIsNull() {
             addCriterion("PERSON_PASSWORD is null");
             return (Criteria) this;
@@ -472,76 +602,6 @@ public class PersonExample {
 
         public Criteria andPersonImageNotBetween(String value1, String value2) {
             addCriterion("PERSON_IMAGE not between", value1, value2, "personImage");
-            return (Criteria) this;
-        }
-
-        public Criteria andPersonSexIsNull() {
-            addCriterion("PERSON_SEX is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andPersonSexIsNotNull() {
-            addCriterion("PERSON_SEX is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andPersonSexEqualTo(String value) {
-            addCriterion("PERSON_SEX =", value, "personSex");
-            return (Criteria) this;
-        }
-
-        public Criteria andPersonSexNotEqualTo(String value) {
-            addCriterion("PERSON_SEX <>", value, "personSex");
-            return (Criteria) this;
-        }
-
-        public Criteria andPersonSexGreaterThan(String value) {
-            addCriterion("PERSON_SEX >", value, "personSex");
-            return (Criteria) this;
-        }
-
-        public Criteria andPersonSexGreaterThanOrEqualTo(String value) {
-            addCriterion("PERSON_SEX >=", value, "personSex");
-            return (Criteria) this;
-        }
-
-        public Criteria andPersonSexLessThan(String value) {
-            addCriterion("PERSON_SEX <", value, "personSex");
-            return (Criteria) this;
-        }
-
-        public Criteria andPersonSexLessThanOrEqualTo(String value) {
-            addCriterion("PERSON_SEX <=", value, "personSex");
-            return (Criteria) this;
-        }
-
-        public Criteria andPersonSexLike(String value) {
-            addCriterion("PERSON_SEX like", value, "personSex");
-            return (Criteria) this;
-        }
-
-        public Criteria andPersonSexNotLike(String value) {
-            addCriterion("PERSON_SEX not like", value, "personSex");
-            return (Criteria) this;
-        }
-
-        public Criteria andPersonSexIn(List<String> values) {
-            addCriterion("PERSON_SEX in", values, "personSex");
-            return (Criteria) this;
-        }
-
-        public Criteria andPersonSexNotIn(List<String> values) {
-            addCriterion("PERSON_SEX not in", values, "personSex");
-            return (Criteria) this;
-        }
-
-        public Criteria andPersonSexBetween(String value1, String value2) {
-            addCriterion("PERSON_SEX between", value1, value2, "personSex");
-            return (Criteria) this;
-        }
-
-        public Criteria andPersonSexNotBetween(String value1, String value2) {
-            addCriterion("PERSON_SEX not between", value1, value2, "personSex");
             return (Criteria) this;
         }
 

@@ -36,7 +36,7 @@ public class WSocketHandler extends TextWebSocketHandler {
 	public void afterConnectionEstablished(WebSocketSession session) throws Exception {
 		String key = null;
 		WSSessionInfo info = getSessionInfo(session);
-		if (Constants.WS.TEST.equals(info.getLabel())) {
+		if (Constants.WS.TEST.equals(info.getLabel()) || Constants.WS.REGISTERDEAL.equals(info.getLabel())) {
 			if (!StringUtils.isEmpty(info.getId())) {
 				key = info.getId();
 				WScache.connect(info.getId(), info.getIp(), session);

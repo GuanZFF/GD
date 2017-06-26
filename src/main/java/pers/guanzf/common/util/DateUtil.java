@@ -14,6 +14,8 @@ public class DateUtil {
 	
 	public final static String HH_MM_SS = "HH:mm:ss";
 	
+	public final static String YYYY_MM_DD_HH_MM_SS_MS = "yyyy_MM_dd_HH_mm_ss_ms";
+	
 	public final static String YYYY = "yyyy";
 	public final static String MM = "MM";
 	public final static String DD = "dd";
@@ -51,7 +53,7 @@ public class DateUtil {
 	}
 	
 	public static void main(String[] args) {
-		System.out.println(getDateString(new Date(), DateUtil.HH));
+		System.out.println(getDateString(new Date(), DateUtil.YYYY_MM_DD_HH_MM_SS_MS));
 	}
 	
 }

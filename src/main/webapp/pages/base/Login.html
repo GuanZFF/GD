@@ -108,7 +108,11 @@
 					<div style="padding-left: 60px;">
 						<h1 class="row text-center">MY ACCOUNT</h1>
 						<hr style="height: 1px; border: none; border-top: 1px dashed #0066CC;">
-						<img alt="头像" src="/images/a1.jpg" class="img-circle" id="userImg">
+						<img alt="头像" src="/images/demo.jpg" class="img-circle" id="userImg" style="width: 200px;height: 200px;">
+						<hr style="height: 1px; border: none; border-top: 1px dashed #0066CC;">
+						<div class="row text-center">
+							<a href="/pages/base/register.html" style="">添加一个新用户</a>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -146,7 +150,7 @@
 						if (result.flag == 1) {
 							$(location).attr('href', '/pages/common/BaseHeader.html');
 						} else {
-							layer.msg(result.message, {icon: 6, time: 500});
+							layer.msg(result.message, {icon: 6, time: 1000});
 						}
 					}
 				});

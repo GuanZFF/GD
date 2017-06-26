@@ -64,7 +64,7 @@
 		<div class="row" style="background-color: #C4C4C4; padding: 50px 80px 70px;">
 			<div class="row col-md-8 col-md-offset-2" style="background-color: #EAEAEA; padding: 30px 50px;">
 				<div class="col-md-7">
-					<form action="" class="sky-form" id="sky-form">
+					<form class="sky-form" id="sky-form">
 						<header>注  册</header>
 						<fieldset>
 							<section>
@@ -79,6 +79,16 @@
 									<i class="icon-append fa fa-phone"></i> 
 									<input type="tel" name="tel" id="tel" placeholder="电话"> 
 									<b class="tooltip tooltip-bottom-right">Needed to verify your phone</b>
+								</label>
+							</section>
+							<section>
+								<label class="select"> 
+									<select name="可修改" id="edit">
+										<option value="0" selected="" disabled="">管理设置</option>
+										<option value="1">管理员</option>
+										<option value="2">用户</option>
+									</select> 
+									<i></i>
 								</label>
 							</section>
 							<section>
@@ -110,7 +120,7 @@
 				<div class="col-md-5 text-center">
 					<h1 class="row text-center">MY ACCOUNT</h1>
 					<hr style="height:1px;border:none;border-top:1px dashed #0066CC;">
-					<img alt="头像" src="/images/a9.jpg" class="img-circle" id="img" style="width: 200px;height: 200px;">
+					<img alt="头像" src="/images/demo.jpg" class="img-circle" id="img" style="width: 200px;height: 200px;">
 					<div class="row" style="padding: 10px;">
 						<button type="button" id="uploadImg" class="btn btn-info col-md-10 col-md-offset-1">请选择</button>
 					</div>
@@ -134,11 +144,10 @@
 			rules: {
 				username: {
 					required: true,
-					rangelength: [5, 10]
 				},
 				tel: {
 					required: true,
-					rangelength: [5, 11]
+					rangelength: [11, 11]
 				},
 				password: {
 					required: true
@@ -150,7 +159,6 @@
 			messages: {
 				username: {
 					required: '不能为空',
-					rangelength: '长度在5~10'
 				},
 				tel: {
 					required: '不能为空',
@@ -167,13 +175,14 @@
 				var imgUrl = $('#img').attr('src');
 				var password = $('#password').val();
 				var confirmPassword = $('#confirmPassword').val();
+				var edit = $('#edit option:selected').val();
 				if (password != confirmPassword) {
 					layer.msg('两次密码不同', {icon: 5, time: 500});
 					return;
 				}
-				var user = {userName: $('#username').val(), userPassword: $('#password').val(), userImg: imgUrl};
+				var user = {userName: $('#username').val(), userPassword: $('#password').val(), userImg: imgUrl, userType: edit};
 				console.log(user);
-				$.ajaxFileUpload({
+				/* $.ajaxFileUpload({
                     url: '/usercontroller/adduser', 
                     type: 'post',
                     data : user,
@@ -186,8 +195,8 @@
                     error: function(data, status, e){ 
                         alert(e);
                     }
-                });
-				/* $.ajax({
+                }); */
+				$.ajax({
 					url: '/usercontroller/adduser',
 					data: user,
 					type: 'post',
@@ -203,7 +212,7 @@
 					error: function() {
 						console.log('error');
 					}
-				}); */
+				});
 			}
 		});
 		$('#reset').on('click', function() {
@@ -234,6 +243,21 @@
 			} else {
 				location.href = '/pages/base/Login.html'
 			}
+		});
+		$('#chooseImg').on('click', function() {
+			layer.open({
+				title: '选择图片',
+				shade: 0.5,
+				type: 2,
+				area: ['357px', '405px'],
+				content: '/pages/base/cutImage.html',
+				yes: function(index, layero) {
+					layer.close(index);
+				},
+				end: function() {
+					console.log('jj')
+				}
+			});
 		});
 	})
 </script>

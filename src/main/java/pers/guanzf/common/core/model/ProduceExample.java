@@ -655,6 +655,76 @@ public class ProduceExample {
             return (Criteria) this;
         }
 
+        public Criteria andProduceNavImgUrlIsNull() {
+            addCriterion("PRODUCE_NAV_IMG_URL is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andProduceNavImgUrlIsNotNull() {
+            addCriterion("PRODUCE_NAV_IMG_URL is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andProduceNavImgUrlEqualTo(String value) {
+            addCriterion("PRODUCE_NAV_IMG_URL =", value, "produceNavImgUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andProduceNavImgUrlNotEqualTo(String value) {
+            addCriterion("PRODUCE_NAV_IMG_URL <>", value, "produceNavImgUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andProduceNavImgUrlGreaterThan(String value) {
+            addCriterion("PRODUCE_NAV_IMG_URL >", value, "produceNavImgUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andProduceNavImgUrlGreaterThanOrEqualTo(String value) {
+            addCriterion("PRODUCE_NAV_IMG_URL >=", value, "produceNavImgUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andProduceNavImgUrlLessThan(String value) {
+            addCriterion("PRODUCE_NAV_IMG_URL <", value, "produceNavImgUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andProduceNavImgUrlLessThanOrEqualTo(String value) {
+            addCriterion("PRODUCE_NAV_IMG_URL <=", value, "produceNavImgUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andProduceNavImgUrlLike(String value) {
+            addCriterion("PRODUCE_NAV_IMG_URL like", value, "produceNavImgUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andProduceNavImgUrlNotLike(String value) {
+            addCriterion("PRODUCE_NAV_IMG_URL not like", value, "produceNavImgUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andProduceNavImgUrlIn(List<String> values) {
+            addCriterion("PRODUCE_NAV_IMG_URL in", values, "produceNavImgUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andProduceNavImgUrlNotIn(List<String> values) {
+            addCriterion("PRODUCE_NAV_IMG_URL not in", values, "produceNavImgUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andProduceNavImgUrlBetween(String value1, String value2) {
+            addCriterion("PRODUCE_NAV_IMG_URL between", value1, value2, "produceNavImgUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andProduceNavImgUrlNotBetween(String value1, String value2) {
+            addCriterion("PRODUCE_NAV_IMG_URL not between", value1, value2, "produceNavImgUrl");
+            return (Criteria) this;
+        }
+
         public Criteria andCreateDateIsNull() {
             addCriterion("CREATE_DATE is null");
             return (Criteria) this;
@@ -892,6 +962,276 @@ public class ProduceExample {
 
         public Criteria andProduceSellNumNotBetween(Integer value1, Integer value2) {
             addCriterion("PRODUCE_SELL_NUM not between", value1, value2, "produceSellNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andProduceTodayNumIsNull() {
+            addCriterion("PRODUCE_TODAY_NUM is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andProduceTodayNumIsNotNull() {
+            addCriterion("PRODUCE_TODAY_NUM is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andProduceTodayNumEqualTo(Integer value) {
+            addCriterion("PRODUCE_TODAY_NUM =", value, "produceTodayNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andProduceTodayNumNotEqualTo(Integer value) {
+            addCriterion("PRODUCE_TODAY_NUM <>", value, "produceTodayNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andProduceTodayNumGreaterThan(Integer value) {
+            addCriterion("PRODUCE_TODAY_NUM >", value, "produceTodayNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andProduceTodayNumGreaterThanOrEqualTo(Integer value) {
+            addCriterion("PRODUCE_TODAY_NUM >=", value, "produceTodayNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andProduceTodayNumLessThan(Integer value) {
+            addCriterion("PRODUCE_TODAY_NUM <", value, "produceTodayNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andProduceTodayNumLessThanOrEqualTo(Integer value) {
+            addCriterion("PRODUCE_TODAY_NUM <=", value, "produceTodayNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andProduceTodayNumIn(List<Integer> values) {
+            addCriterion("PRODUCE_TODAY_NUM in", values, "produceTodayNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andProduceTodayNumNotIn(List<Integer> values) {
+            addCriterion("PRODUCE_TODAY_NUM not in", values, "produceTodayNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andProduceTodayNumBetween(Integer value1, Integer value2) {
+            addCriterion("PRODUCE_TODAY_NUM between", value1, value2, "produceTodayNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andProduceTodayNumNotBetween(Integer value1, Integer value2) {
+            addCriterion("PRODUCE_TODAY_NUM not between", value1, value2, "produceTodayNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommodityStructrueIdIsNull() {
+            addCriterion("COMMODITY_STRUCTRUE_ID is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommodityStructrueIdIsNotNull() {
+            addCriterion("COMMODITY_STRUCTRUE_ID is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommodityStructrueIdEqualTo(String value) {
+            addCriterion("COMMODITY_STRUCTRUE_ID =", value, "commodityStructrueId");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommodityStructrueIdNotEqualTo(String value) {
+            addCriterion("COMMODITY_STRUCTRUE_ID <>", value, "commodityStructrueId");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommodityStructrueIdGreaterThan(String value) {
+            addCriterion("COMMODITY_STRUCTRUE_ID >", value, "commodityStructrueId");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommodityStructrueIdGreaterThanOrEqualTo(String value) {
+            addCriterion("COMMODITY_STRUCTRUE_ID >=", value, "commodityStructrueId");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommodityStructrueIdLessThan(String value) {
+            addCriterion("COMMODITY_STRUCTRUE_ID <", value, "commodityStructrueId");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommodityStructrueIdLessThanOrEqualTo(String value) {
+            addCriterion("COMMODITY_STRUCTRUE_ID <=", value, "commodityStructrueId");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommodityStructrueIdLike(String value) {
+            addCriterion("COMMODITY_STRUCTRUE_ID like", value, "commodityStructrueId");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommodityStructrueIdNotLike(String value) {
+            addCriterion("COMMODITY_STRUCTRUE_ID not like", value, "commodityStructrueId");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommodityStructrueIdIn(List<String> values) {
+            addCriterion("COMMODITY_STRUCTRUE_ID in", values, "commodityStructrueId");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommodityStructrueIdNotIn(List<String> values) {
+            addCriterion("COMMODITY_STRUCTRUE_ID not in", values, "commodityStructrueId");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommodityStructrueIdBetween(String value1, String value2) {
+            addCriterion("COMMODITY_STRUCTRUE_ID between", value1, value2, "commodityStructrueId");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommodityStructrueIdNotBetween(String value1, String value2) {
+            addCriterion("COMMODITY_STRUCTRUE_ID not between", value1, value2, "commodityStructrueId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProduceDescIsNull() {
+            addCriterion("PRODUCE_DESC is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andProduceDescIsNotNull() {
+            addCriterion("PRODUCE_DESC is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andProduceDescEqualTo(String value) {
+            addCriterion("PRODUCE_DESC =", value, "produceDesc");
+            return (Criteria) this;
+        }
+
+        public Criteria andProduceDescNotEqualTo(String value) {
+            addCriterion("PRODUCE_DESC <>", value, "produceDesc");
+            return (Criteria) this;
+        }
+
+        public Criteria andProduceDescGreaterThan(String value) {
+            addCriterion("PRODUCE_DESC >", value, "produceDesc");
+            return (Criteria) this;
+        }
+
+        public Criteria andProduceDescGreaterThanOrEqualTo(String value) {
+            addCriterion("PRODUCE_DESC >=", value, "produceDesc");
+            return (Criteria) this;
+        }
+
+        public Criteria andProduceDescLessThan(String value) {
+            addCriterion("PRODUCE_DESC <", value, "produceDesc");
+            return (Criteria) this;
+        }
+
+        public Criteria andProduceDescLessThanOrEqualTo(String value) {
+            addCriterion("PRODUCE_DESC <=", value, "produceDesc");
+            return (Criteria) this;
+        }
+
+        public Criteria andProduceDescLike(String value) {
+            addCriterion("PRODUCE_DESC like", value, "produceDesc");
+            return (Criteria) this;
+        }
+
+        public Criteria andProduceDescNotLike(String value) {
+            addCriterion("PRODUCE_DESC not like", value, "produceDesc");
+            return (Criteria) this;
+        }
+
+        public Criteria andProduceDescIn(List<String> values) {
+            addCriterion("PRODUCE_DESC in", values, "produceDesc");
+            return (Criteria) this;
+        }
+
+        public Criteria andProduceDescNotIn(List<String> values) {
+            addCriterion("PRODUCE_DESC not in", values, "produceDesc");
+            return (Criteria) this;
+        }
+
+        public Criteria andProduceDescBetween(String value1, String value2) {
+            addCriterion("PRODUCE_DESC between", value1, value2, "produceDesc");
+            return (Criteria) this;
+        }
+
+        public Criteria andProduceDescNotBetween(String value1, String value2) {
+            addCriterion("PRODUCE_DESC not between", value1, value2, "produceDesc");
+            return (Criteria) this;
+        }
+
+        public Criteria andProduceUserIdIsNull() {
+            addCriterion("PRODUCE_USER_ID is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andProduceUserIdIsNotNull() {
+            addCriterion("PRODUCE_USER_ID is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andProduceUserIdEqualTo(String value) {
+            addCriterion("PRODUCE_USER_ID =", value, "produceUserId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProduceUserIdNotEqualTo(String value) {
+            addCriterion("PRODUCE_USER_ID <>", value, "produceUserId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProduceUserIdGreaterThan(String value) {
+            addCriterion("PRODUCE_USER_ID >", value, "produceUserId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProduceUserIdGreaterThanOrEqualTo(String value) {
+            addCriterion("PRODUCE_USER_ID >=", value, "produceUserId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProduceUserIdLessThan(String value) {
+            addCriterion("PRODUCE_USER_ID <", value, "produceUserId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProduceUserIdLessThanOrEqualTo(String value) {
+            addCriterion("PRODUCE_USER_ID <=", value, "produceUserId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProduceUserIdLike(String value) {
+            addCriterion("PRODUCE_USER_ID like", value, "produceUserId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProduceUserIdNotLike(String value) {
+            addCriterion("PRODUCE_USER_ID not like", value, "produceUserId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProduceUserIdIn(List<String> values) {
+            addCriterion("PRODUCE_USER_ID in", values, "produceUserId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProduceUserIdNotIn(List<String> values) {
+            addCriterion("PRODUCE_USER_ID not in", values, "produceUserId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProduceUserIdBetween(String value1, String value2) {
+            addCriterion("PRODUCE_USER_ID between", value1, value2, "produceUserId");
+            return (Criteria) this;
+        }
+
+        public Criteria andProduceUserIdNotBetween(String value1, String value2) {
+            addCriterion("PRODUCE_USER_ID not between", value1, value2, "produceUserId");
             return (Criteria) this;
         }
     }

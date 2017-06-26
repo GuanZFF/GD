@@ -37,7 +37,7 @@
 	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
 		<property name="realm" ref="systemAuthorizingRealm" />
 		<property name="cacheManager" ref="cacheManager" />
-		<property name="sessionManager" ref="sessionManager"></property>
+		<!-- <property name="sessionManager" ref="sessionManager"></property> -->
 	</bean>
 
 	<!-- Define the realm you want to use to connect to your back-end security datasource: -->

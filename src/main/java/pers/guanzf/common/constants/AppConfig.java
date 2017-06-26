@@ -8,7 +8,29 @@ public class AppConfig {
 
 	@Value("${DEFAULT_USER_IMAGE_URL}")
 	private String defaultUserImageUrl;
+
+	@Value("${UPLOAD_IMAGE}")
+	private String uploadImage;
+
+	@Value("${HANDLE_UPLOAD_IMAGE}")
+	private String handleUploadImage;
 	
+	public String getUploadImage() {
+		return uploadImage;
+	}
+
+	public void setUploadImage(String uploadImage) {
+		this.uploadImage = uploadImage;
+	}
+
+	public String getHandleUploadImage() {
+		return handleUploadImage;
+	}
+
+	public void setHandleUploadImage(String handleUploadImage) {
+		this.handleUploadImage = handleUploadImage;
+	}
+
 	public String getDefaultUserImageUrl() {
 		return defaultUserImageUrl;
 	}

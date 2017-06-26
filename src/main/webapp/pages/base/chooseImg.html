@@ -74,6 +74,7 @@
 		function closeWindow(param) {
 			parent.document.getElementById('img').src = param;
 			var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
+			console.log(index);
 			parent.layer.close(index);
 		}
 	});

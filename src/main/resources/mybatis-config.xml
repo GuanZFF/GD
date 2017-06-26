@@ -8,6 +8,12 @@
 	<typeAliases>
 		<typeAlias type="pers.guanzf.common.core.model.info.ProduceInfo" alias="ProduceInfo"/>
 		<typeAlias type="pers.guanzf.common.core.model.info.UserInfo" alias="UserInfo"/>
+		<typeAlias type="pers.guanzf.common.core.model.info.FriendInfo" alias="FriendInfo"/>
+		<typeAlias type="pers.guanzf.common.core.model.info.CommodityStructrueInfo" alias="CommodityStructrueInfo"/>
+		<typeAlias type="pers.guanzf.common.core.model.info.PersonInfo" alias="PersonInfo"/>
+		<typeAlias type="pers.guanzf.common.core.model.info.SysDictInfo" alias="SysDictInfo"/>
+		<typeAlias type="pers.guanzf.common.core.model.info.PersonProduceInfo" alias="PersonProduceInfo"/>
+		<typeAlias type="pers.guanzf.common.core.model.info.MessageManageInfo" alias="MessageManageInfo"/>
 	</typeAliases>
 
 </configuration>  
