@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="/plugins/sky-forms-pro/skyforms/custom/custom-sky-forms.css" rel="stylesheet">
+<link href="/plugins/sky-forms-pro/skyforms/css/sky-forms.css" rel="stylesheet">
+<link href="/assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+<link href="/css/style.css" rel="stylesheet">
+
+<style>
+	/* 导航设计的CSS */
+	.container {
+		padding-left:0px;
+		padding-right:0px;
+		width: 100%;
+	}
+	.navbar-brand {
+		padding-top: 0;
+		padding-left: 0;
+	}
+	.navbar-default {
+		background-color: white;
+	}
+	.navbar {
+		padding-top: 15px;
+		border: 0;
+	}
+	.navbar .nav>li>a {
+	
+	}
+	.navbar-default #nav>li>a:hover, .navbar-default #nav>li>a:focus {
+		color: #333;
+		background-color: #CDC5BF;
+	}
+	#img-style:HOVER {
+		opacity: 0.9; 
+		color: #fff; 
+		background: rgba(0,0,0,0.8);
+	}
+	/* 导航设计的CSS */
+	#secondNav a {
+		font-size: 24px;
+	}
+	#secondNav li:HOVER {
+		background-color: #BFBFBF;
+	}
+}
+</style>
+</head>
+<body>
+	<div class="container">
+		<!-- 导航栏设计 START -->
+		<div id="header" class="row navbar navbar-default" role="navigation" style="height: 80px; margin-bottom: 0;" >
+			<div class="col-md-1"></div>
+			<div class="navbar-header col-md-1">
+				<a href="/pages/common/BaseHeader.html" class="navbar-brand"><img alt="LOGO" src="/images/logo.jpg" style="width: 50px; height: 50px;"></a>
+			</div>
+			<ul class="nav navbar-nav col-md-7" id="nav">
+				<li><a href="##">名师介绍</a></li>
+				<li><a href="##">成功案例</a></li>
+				<li><a href="##">关于我们</a></li>
+				<li><a href="##">关于我们</a></li>
+				<li><a href="##">分析数据</a></li>
+			</ul>
+			<ul class="nav navbar-nav col-md-2" style="border-right: 0;font-size: 19px;">
+				<li class="col-md-4 text-center"><a href="##"><span class="glyphicon glyphicon-search"></span></a></li>
+				<li class="col-md-4 text-center"><a href="##"><span class="glyphicon glyphicon-user"></span></a></li>
+				<li class="col-md-4 text-center"><a href="##"><span class="glyphicon glyphicon-cog"></span></a></li>
+			</ul>
+			<div class="col-md-1"></div>
+		</div>
+		<!-- 导航栏设计 END -->
+		<div class="row" style="background-color: #C4C4C4;padding: 50px;">
+			<div class="row" style="margin: 0 50px;">
+				<div class="col-md-3" style="padding: 10px;background-color: #EAEAEA;">
+					<div class="row">
+						<div style="text-center; padding: 0 80px;">
+							<img alt="用户头像" src="/images/a2.jpg" id="img" class="img-thumbnail">
+						</div>
+					</div>
+					<!-- 二级导航栏设计 -->
+					<div class="row" style="text-center;padding: 10px 0;" id="secondNav">
+						<ul class="list-unstyled equal-height-list">
+							<li><a style="margin-left: 40px;"><i class="fa fa-cog"></i> test</a></li>
+							<li style="background-color: #C4C4C4;"><a style="margin-left: 60px;"><i class="fa fa-plus-square"></i> test</a></li>
+							<li><a style="margin-left: 40px;"><i class="fa fa-paper-plane"></i> test</a></li>
+							<li><a style="margin-left: 40px;"><i class="fa fa-volume-up"></i> test</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-md-9" style="background-color: #FCFCFC;">
+					<div class="row">
+						<h3 class="col-md-9 col-md-offset-3">我的订单</h3>
+					</div>
+					<div class="row team-v3">
+						<div class="col-md-4 col-sm-6 md-margin-bottom-50">
+							<div class="team-img">
+								<img class="img-responsive" src="/images/a1.jpg" alt="">
+								<div class="team-hover">
+									<span>Daniel Wearne</span> <small>Technical Director</small>
+									<p>Lorem ipsum dolor sit ame con sectetur adipisci ng e lit.</p>
+									<ul class="list-inline team-social-v3">
+										<li><a href="#"><i class="rounded-x fa fa-twitter"></i></a></li>
+										<li><a href="#"><i class="rounded-x fa fa-facebook"></i></a></li>
+										<li><a href="#"><i class="rounded-x fa fa-google-plus"></i></a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script src="/plugins/jquery/jquery.min.js"></script>
+<script src="/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="/plugins/layer-master/src/layer.js"></script>
+<script src="/assets/plugins/sky-forms-pro/skyforms/js/jquery.validate.min.js"></script>
+<script src="/assets/plugins/sky-forms-pro/skyforms/js/jquery-ui.min.js"></script>
+<script>
+	$(document).ready(function() {
+		var user;
+		$.ajax({
+			url: '/usercontroller/getcurrentuser',
+			dataType: 'json',
+			type: 'post',
+			success: function(result) {
+				console.log(result);
+				user = result;
+			}
+		})
+	});
+</script>
+</html>

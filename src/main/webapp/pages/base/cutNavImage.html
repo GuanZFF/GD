@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>选择图片</title>
+<link href="/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="/plugins/dataTables/DataTables-1.10.12/media/css/dataTables.bootstrap.min.css" rel="stylesheet">
+<link href="/plugins/sky-forms-pro/skyforms/custom/custom-sky-forms.css" rel="stylesheet">
+<link href="/plugins/sky-forms-pro/skyforms/css/sky-forms.css" rel="stylesheet">
+<link href="/assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+<link href="/css/style.css" rel="stylesheet">
+<link href="/plugins/jcrop/jquery.Jcrop.min.css" rel="stylesheet">
+<style>
+	#file {
+	
+	}
+</style>
+</head>
+<body style="overflow: hidden;">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-8">
+				<img alt="/images/userImg/a2.jpg" src="/images/demo.jpg" id="img" style="width: 230px;height: auto;">
+			</div>
+			<div class="col-xs-4 text-center" style="margin: 20px 0;">
+				<div class="row">
+					<label class="btn btn-info" for="file">选择图片</label>
+					<input type="file" id="file" name="file" class="btn btn-info" style="position:absolute;clip:rect(0 0 0 0);"/>
+				</div>
+				<hr style="height:1px;border:none;border-top:1px dashed #CFCFCF;margin: 10px 0;">
+				<div class="row">
+					<input type="button" value="上传图片"  class="btn btn-info" id="load1"/>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script src="/plugins/jquery/jquery.min.js"></script>
+<script src="/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="/plugins/dataTables/DataTables-1.10.12/media/js/jquery.dataTables.min.js"></script>
+<script src="/assets/plugins/sky-forms-pro/skyforms/js/jquery.validate.min.js"></script>
+<script src="/assets/plugins/sky-forms-pro/skyforms/js/jquery-ui.min.js"></script>
+<script src="/javascript/ajaxfileupload.js"></script>
+<script src="/plugins/layer-master/src/layer.js"></script>
+<script src="/plugins/jcrop/jquery.Jcrop.min.js"></script>
+
+<script>
+	$(document).ready(function() {
+		function GetRequest() {
+			var url = decodeURI(location.search);
+			var theRequest = new Object();
+			if (url.indexOf("?") != -1) {
+				var str = url.substr(1);
+				strs = str.split("&");
+				for (var i = 0; i < strs.length; i++) {
+					theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+				}
+			}
+			return theRequest;
+		}
+		var imageUrl;
+		$("#file").on('change', function() {
+			var url = window.URL.createObjectURL($('#file')[0].files[0]);
+			$('#img').attr('src', url);
+			cutImage();
+		});
+		$('#load1').on('click', function() {
+			if (image == '' || image == null) {
+				layer.msg('请选择图片');
+				return;
+			}
+			var multiple = $('#img').prop('width')/$('#img').css('width').substring(0, $('#img').css('width').indexOf('px'));
+			var images = {};
+			images.x = Math.round(image.x*multiple);
+			images.x2 = Math.round(image.x2*multiple);
+			images.y = Math.round(image.y*multiple);
+			images.y2 = Math.round(image.y2*multiple);
+			images.w = Math.round(image.w*multiple);
+			images.h = Math.round(image.h*multiple);
+			uploadImage(images);
+		});
+		function uploadImage(images) {
+			$.ajaxFileUpload({
+				url: '/usercontroller/handleimage',
+				fileElementId: 'file',
+				dataType: 'context',
+				type: 'post',
+				data: images,
+				success: function(data, status) {
+					if (data != '0') {
+						imageUrl = data;
+					}
+					console.log(data);
+					closeWindow();
+				},
+				error: function(data, status, e) {
+					console.log(e);
+					layer.msg('文件传输失败');
+				}
+			});
+		}
+		var image;
+		function cutImage() {
+			$('#img').Jcrop({
+				allowMove: true,
+				allowSelect: true,
+				bgOpacity: 0.6,
+				aspectRatio: 3,
+				onChange: function(img) {
+					image = img;
+				},
+				function() {
+					image = this;
+				}
+			});
+		}
+		function closeWindow() {
+			if (imageUrl != null && imageUrl != '') {
+				parent.document.getElementById('imgNav').src = imageUrl;
+			}
+			var index = parent.layer.index; //获取窗口索引
+			parent.layer.close(index);
+		}
+	});
+</script>
+</html>

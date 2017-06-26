@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="/plugins/dataTables/DataTables-1.10.12/media/css/dataTables.bootstrap.min.css" rel="stylesheet">
+<link href="/plugins/sky-forms-pro/skyforms/custom/custom-sky-forms.css" rel="stylesheet">
+<link href="/plugins/sky-forms-pro/skyforms/css/sky-forms.css" rel="stylesheet">
+<link href="/assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+<link href="/css/style.css" rel="stylesheet">
+<link href="/javascript/css/setting.css" rel="stylesheet">
+</head>
+<body>
+	<div class="container">
+		<!-- NAVBAR-FIXED-TOP属性可以使导航栏固定在顶端 -->
+		<div id="header" class="row navbar navbar-default" role="navigation" style="height: 80px; margin-bottom: 0;" >
+			<div class="col-md-1"></div>
+			<div class="navbar-header col-md-1">
+				<a href="/pages/common/BaseHeader.html" class="navbar-brand"><img alt="LOGO" src="/images/logo.jpg" style="width: 50px; height: 50px;"></a>
+			</div>
+			<ul class="nav navbar-nav col-md-7" id="nav">
+				<li><a href="/pages/common/BaseHeader.html">系统首页</a></li>
+				<li><a href="/pages/common/registerDeal.html">注册管理</a></li>
+				<li><a href="/pages/common/produceDetail.html">商品详情</a></li>
+				<li><a href="/pages/common/registerProduce.html">注册商品</a></li>
+				<li><a href="/pages/common/sysDictManage.html">字典管理</a></li>
+			</ul>
+			<ul class="nav navbar-nav col-md-2" style="border-right: 0;font-size: 19px;">
+				<li class="col-md-4 text-center" id="liSearch"><a href="##"><span class="glyphicon glyphicon-search" id="search"></span></a></li>
+				<li class="col-md-4 text-center" style="padding: 0;"><a href="/pages/common/personInfo.html"><span class="glyphicon glyphicon-user"></span></a></li>
+				<li class="col-md-4 text-center"><a href="/pages/common/setting.html"><span class="glyphicon glyphicon-cog"></span></a></li>
+			</ul>
+			<div class="col-md-1"></div>
+		</div>
+		<div class="row" style="position: absolute; display: none;z-index: 1;" id="search-open">
+			<div class="col-xs-3 col-xs-offset-8 input-group" style="padding: 10px;background-color: white; opacity:1;">
+				<input type="text" class="form-control" placeholder="Search" id="inputSearch"> 
+				<span class="input-group-btn">
+					<button class="btn btn-info" type="button" id="btnSearch">Go</button>
+				</span>
+			</div>
+		</div>
+		<!-- 导航结束 -->
+		<div class="row" style="background-color: #F2F2F2;">
+			<div class="col-md-6 col-md-offset-3 text-center" style="padding: 20px;">
+				<form class="sky-form" id="sky-form">
+					<header>用户个人信息</header>
+					<fieldset>
+						<section>
+							<label class="input"> 
+								<i class="icon-append fa fa-user"></i> 
+								<input type="text" name="name" id="name" placeholder="姓名"> 
+								<b class="tooltip tooltip-bottom-right">Needed to enter the name</b>
+							</label>
+						</section>
+						<section>
+							<label class="input"> 
+								<i class="icon-append fa fa-user"></i> 
+								<input type="text" name="sex" id="sex" placeholder="性别"> 
+								<b class="tooltip tooltip-bottom-right">Needed to enter the sex</b>
+							</label>
+						</section>
+						<section>
+							<label class="input"> 
+								<i class="icon-append fa fa-user"></i> 
+								<input type="text" name="password" id="password" placeholder="密码"> 
+								<b class="tooltip tooltip-bottom-right">Needed to enter the password</b>
+							</label>
+						</section>
+						<section>
+							<label class="input"> 
+								<i class="icon-append fa fa-sort-numeric-desc"></i> 
+								<input type="text" name="age" id="age" placeholder="年龄"> 
+								<b class="tooltip tooltip-bottom-right">Needed to enter the age</b>
+							</label>
+						</section>
+						<section>
+							<label class="input"> 
+								<i class="icon-append fa fa-user"></i> 
+								<input type="text" name="weight" id="weight" placeholder="体重"> 
+								<b class="tooltip tooltip-bottom-right">Needed to enter the weight</b>
+							</label>
+						</section>
+						<section>
+							<label class="input"> 
+								<i class="icon-append fa fa-user"></i> 
+								<input type="text" name="height" id="height" placeholder="身高"> 
+								<b class="tooltip tooltip-bottom-right">Needed to enter the height</b>
+							</label>
+						</section>
+						<section>
+							<label class="input"> 
+								<i class="icon-append fa fa-user"></i> 
+								<input type="text" name="regtime" id="regtime" placeholder="注册时间"> 
+								<b class="tooltip tooltip-bottom-right">Needed to enter the regtime</b>
+							</label>
+						</section>
+						<section>
+							<label class="input"> 
+								<i class="icon-append fa fa-user"></i> 
+								<input type="text" name="address" id="address" placeholder="地址"> 
+								<b class="tooltip tooltip-bottom-right">Needed to enter the address</b>
+							</label>
+						</section>
+						<section>
+							<label class="input"> 
+								<i class="icon-append fa fa-user"></i> 
+								<input type="text" name="phone" id="phone" placeholder="电话"> 
+								<b class="tooltip tooltip-bottom-right">Needed to enter the phone</b>
+							</label>
+						</section>
+					</fieldset>
+					<footer>
+						<div class="row text-center">
+							<div class="col-xs-6">
+								<button type="submit" class="btn btn-info" id="submit">
+									<span class="glyphicon glyphicon-ok-circle"></span> 修改
+								</button>
+							</div>
+							<div class="col-xs-6">
+								<button type="button" class="btn btn-info" id="cancel">
+									<span class="glyphicon glyphicon-remove-sign"></span> 重置
+								</button>
+							</div>
+						</div>
+					</footer>
+				</form>
+			</div>
+		</div>
+		<!-- 根部设置 -->
+		<div id="footer" class="row" style="background-color: #5E5E5E">
+			<div class="col-md-2 text-right" style="margin: 20px 0;">
+				<a href="#"><img alt="图片" class="img-circle" id="userImg" src="/images/a7.jpg" style="width: 100px;height: 100px;"></a>
+			</div>
+			<div class="col-md-2" style="padding: 45px 0;">
+				<div style="background-color: white;padding: 5px 10px;display: none;border-radius:10px !important;" id="username">
+					<h3 class="#5E5E5E" style="margin: 0px;color: black;" id="usernameh">姓名</h3>
+				</div>
+			</div>
+			<div class="col-md-2 text-center col-md-offset-3" style="padding: 30px 0;">
+				<h3 id="aboutMe" style="color: #000000;">关于我们</h3>
+				<h3 id="recentMessage" style="color: #000000;">最新消息</h3>
+			</div>
+			<div class="col-md-3 text-center">
+				<div class="row" style="margin-top: 30px;">
+					<h3 style="color: #000000;">联系我们</h3>
+					<h3 style="color: #000000;">1234567890</h3>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script src="/plugins/jquery/jquery.min.js"></script>
+<script src="/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="/plugins/dataTables/DataTables-1.10.12/media/js/jquery.dataTables.min.js"></script>
+<script src="/assets/plugins/sky-forms-pro/skyforms/js/jquery.validate.min.js"></script>
+<script src="/assets/plugins/sky-forms-pro/skyforms/js/jquery-ui.min.js"></script>
+<script src="/javascript/ajaxfileupload.js"></script>
+<script src="/plugins/layer-master/src/layer.js"></script>
+<script src="/javascript/js/setting.js"></script>
+<script src="/javascript/echarts.min.js"></script>
+<script>
+	$(function() {
+		/* $.ajax({
+			url: '/personcontroller/updatepersoninfo',
+			dataType: 'json',
+			type: 'post',
+			success: function(result) {
+				if (result) {
+					layer.msg('设置成功', {time: 500, icon: 1});
+				} else {
+					layer.msg('系统错误，请联系管理员');
+				}
+			}
+		}); */
+		// 添加数据处理步骤
+		var i = 0;
+		$('#sky-form').validate({// jquery的验证设置信息
+			rules: {// 验证规则
+				name: {
+					required: true
+				},
+				sex: {
+					required: true
+				},
+				password: {
+					required: true
+				},
+				age: {
+					required: true
+				},
+				weight: {
+					required: true
+				},
+				height: {
+					required: true
+				},
+				address: {
+					required: true
+				},
+				phone: {
+					required: true
+				}
+			},
+			valudateCode: {// 验证时的信息反馈
+				required: '数据不能为空'
+			},
+			errorPlacement: function(error, element) {// 验证时的错误提示位置设置 有多个错误时执行多次
+				
+			},
+			submitHandler: function (){// 提交form时的执行函数
+				var person = new Object();
+				person.personName = $('#name').val();
+				person.personSex = $('#sex').val();
+				person.personPassword = $('#password').val();
+				person.personAge = $('#age').val();
+				person.personWeight = $('#weight').val();
+				person.personHeight = $('#height').val();
+				person.personAddress = $('#address').val();
+				person.personPhone = $('#phone').val();
+				$.ajax({
+					url: '/personcontroller/updatepersoninfo',
+					data: person,
+					dataType: 'json',
+					type: 'post',
+					success: function(result) {
+						if (result == 1) {
+							layer.msg('设置成功', {time: 500, icon: 1});
+						} else {
+							layer.msg('系统错误，请联系管理员');
+						}
+					}
+				})
+			}
+		});
+	})
+</script>
+</html>

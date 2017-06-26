@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="/plugins/dataTables/DataTables-1.10.12/media/css/dataTables.bootstrap.min.css" rel="stylesheet">
+<link href="/plugins/sky-forms-pro/skyforms/custom/custom-sky-forms.css" rel="stylesheet">
+<link href="/plugins/sky-forms-pro/skyforms/css/sky-forms.css" rel="stylesheet">
+<link href="/assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+<link href="/css/style.css" rel="stylesheet">
+<link href="/javascript/css/setting.css" rel="stylesheet">
+<style>
+	.sky-form .select i {
+  		top: 10px;
+ 		width: 9px;
+  		right: 9px;
+  		height: 6px;
+	}
+</style>
+</head>
+<body>
+	<div class="container">
+		<!-- NAVBAR-FIXED-TOP属性可以使导航栏固定在顶端 -->
+		<div id="header" class="row navbar navbar-default" role="navigation" style="height: 80px; margin-bottom: 0;" >
+			<div class="col-md-1"></div>
+			<div class="navbar-header col-md-1">
+				<a href="/pages/common/BaseHeader.html" class="navbar-brand"><img alt="LOGO" src="/images/logo.jpg" style="width: 50px; height: 50px;"></a>
+			</div>
+			<ul class="nav navbar-nav col-md-7" id="nav">
+				<li><a href="/pages/common/BaseHeader.html">系统首页</a></li>
+				<li><a href="/pages/common/registerDeal.html">注册管理</a></li>
+				<li><a href="/pages/common/produceDetail.html">商品详情</a></li>
+				<li><a href="/pages/common/registerProduce.html">注册商品</a></li>
+				<li><a href="/pages/common/sysDictManage.html">字典管理</a></li>
+			</ul>
+			<ul class="nav navbar-nav col-md-2" style="border-right: 0;font-size: 19px;">
+				<li class="col-md-4 text-center" id="liSearch"><a href="##"><span class="glyphicon glyphicon-search" id="search"></span></a></li>
+				<li class="col-md-4 text-center" style="padding: 0;"><a href="/pages/common/personInfo.html"><span class="glyphicon glyphicon-user"></span></a></li>
+				<li class="col-md-4 text-center"><a href="/pages/common/setting.html"><span class="glyphicon glyphicon-cog"></span></a></li>
+			</ul>
+			<div class="col-md-1"></div>
+		</div>
+		<div class="row" style="position: absolute; display: none;z-index: 1;" id="search-open">
+			<div class="col-xs-3 col-xs-offset-8 input-group" style="padding: 10px;background-color: white; opacity:1;">
+				<input type="text" class="form-control" placeholder="Search" id="inputSearch"> 
+				<span class="input-group-btn">
+					<button class="btn btn-info" type="button" id="btnSearch">Go</button>
+				</span>
+			</div>
+		</div>
+		<!-- 导航结束 -->
+		
+		<!-- 商品信息的注册 -->
+		<div class="row" style="background-color: #F2F2F2; padding: 40px;">
+			<div class="col-md-5 col-md-offset-1">
+				<form class="sky-form" id="sky-form">
+					<header>添加商品信息</header>
+					<fieldset>
+						<section>
+							<label class="input"> 
+								<i class="icon-append fa fa-user"></i> 
+								<input type="text" name="name" id="name" placeholder="商品名称"> 
+								<b class="tooltip tooltip-bottom-right">Needed to enter the name</b>
+							</label>
+						</section>
+						<section>
+							<label class="select"> 
+								<select name="gender" id="type">
+									<option value="0" selected="" disabled="">商品类型</option>
+								</select> 
+								<i></i>
+							</label>
+						</section>
+						<section>
+							<label class="input"> 
+								<i class="icon-append fa fa-jpy"></i> 
+								<input type="text" name="price" id="price" placeholder="商品价格"> 
+								<b class="tooltip tooltip-bottom-right">Needed to enter the price</b>
+							</label>
+						</section>
+						<div class="row">
+							<div class="col-md-7">
+								<img alt="图片信息" src="/images/demo.jpg" id="img" class="col-md-12" style="padding: 0;">
+							</div>
+							<div class="col-md-5" style="padding: 0 15px 20px 0;">
+								<label class="textarea">
+                                	<textarea rows="6" name="message" id="message" placeholder="产品信息描述"></textarea>
+                            	</label>
+								<input type="button" class="btn btn-primary col-md-12" id="uploadImage" value="选择图片" style="margin-top: 10px;">
+								<input type="button" class="btn btn-primary col-md-12" id="uploadNavImage" value="选择导航图片" style="margin-top: 12px;">
+							</div>
+						</div>
+						<div class="row" style="width: 480px;padding: 0 15px; margin-bottom: 20px;">
+							<img alt="导航图片" src="/images/demo1.jpg" id="imgNav" style="width: 450px;">
+						</div>
+						<div class="row" style="padding: 0 14px;margin-bottom: 20px;">
+							<div class="input-group">
+								<input type="text" class="form-control" placeholder="商品目录" disabled="disabled" id="catalog"> 
+								<span class="input-group-btn">
+									<button class="btn btn-info" type="button" id="chooseCatalog">选择父级目录</button>
+								</span>
+							</div>
+						</div>
+					</fieldset>
+					<footer>
+						<div class="row text-center">
+							<div class="col-xs-6">
+								<button type="submit" class="btn btn-success" id="submit">
+									<span class="glyphicon glyphicon-ok-circle"></span> 提交
+								</button>
+							</div>
+							<div class="col-xs-6">
+								<button type="button" class="btn btn-danger" id="cancel">
+									<span class="glyphicon glyphicon-remove-sign"></span> 重置
+								</button>
+							</div>
+						</div>
+					</footer>
+				</form>
+			</div>
+			<div class="col-md-5">
+				<div class="row text-center" style="margin: 10px 0;">
+					<h1>你已添加过的商品信息</h1>
+				</div>
+				<div class="row team-v3">
+					<!-- <div class="col-md-6 text-center" style="margin: 10px 0;">
+						<div class="team-img" style="height: 240px;width: 240px; margin-left: 30px;">
+							<img class="img-thumbnail" src="/images/demo.jpg" id="friend1" alt="好友推荐一">
+							<div class="team-hover">
+								<span>Daniel Wearne</span> <small>Technical Director</small>
+								<p>Lorem ipsum dolor sit ame con sectetur adipisci ng e lit.</p>
+								<button class="btn btn-info" id="friendDetail1">查看详情</button>
+							</div>
+						</div>
+					</div> -->
+				</div>
+			</div>
+			<div class="col-md-1">
+				
+			</div>
+		</div>
+		<!-- 根部设置 -->
+		<div id="footer" class="row" style="background-color: #5E5E5E">
+			<div class="col-md-2 text-right" style="margin: 20px 0;">
+				<a href="#"><img alt="图片" class="img-circle" id="userImg" src="/images/a7.jpg" style="width: 100px;height: 100px;"></a>
+			</div>
+			<div class="col-md-2" style="padding: 45px 0;">
+				<div style="background-color: white;padding: 5px 10px;display: none;border-radius:10px !important;" id="username">
+					<h3 class="#5E5E5E" style="margin: 0px;color: black;" id="usernameh">姓名</h3>
+				</div>
+			</div>
+			<div class="col-md-2 text-center col-md-offset-3" style="padding: 30px 0;">
+				<h3 id="aboutMe" style="color: #000000;">关于我们</h3>
+				<h3 id="recentMessage" style="color: #000000;">最新消息</h3>
+			</div>
+			<div class="col-md-3 text-center">
+				<div class="row" style="margin-top: 30px;">
+					<h3 style="color: #000000;">联系我们</h3>
+					<h3 style="color: #000000;">1234567890</h3>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script src="/plugins/jquery/jquery.min.js"></script>
+<script src="/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="/plugins/dataTables/DataTables-1.10.12/media/js/jquery.dataTables.min.js"></script>
+<script src="/assets/plugins/sky-forms-pro/skyforms/js/jquery.validate.min.js"></script>
+<script src="/assets/plugins/sky-forms-pro/skyforms/js/jquery-ui.min.js"></script>
+<script src="/javascript/ajaxfileupload.js"></script>
+<script src="/plugins/layer-master/src/layer.js"></script>
+<script src="/javascript/js/setting.js"></script>
+
+<script>
+	$(document).ready(function() {
+		setProduceType();
+		function setProduceType() {
+			$.ajax({
+				url: '/sysdictcontroller/listsysdictbytype',
+				data: {sysDictType: 'produceType'},
+				dataType: 'json',
+				type: 'post',
+				success: function(result) {
+					for (var i = 0; i < result.length; i++) {
+						$('#type').append('<option value="' + result[i].sysDictId + '">' + result[i].sysDictName + '</option>')
+					}
+				}
+			})
+		}
+		/* 提交商品信息 */
+		$('#sky-form').validate({
+			rules: {
+				name: {
+					required: true
+				},
+				price: {
+					required: true,
+					number: true
+				}
+			},
+			valudateCode: {// 验证时的信息反馈
+				required: '数据不能为空',
+				number: '请输入有效数字'
+			},
+			errorPlacement: function(error, element) {// 验证时的错误提示位置设置 有多个错误时执行多次
+				/* if ($('#name').val() == '' || $('#name').val() == null) {
+					layer.msg('位置设置', {time: 500, icon: 2});
+					console.log('tests' + i++);
+				} */
+			},
+			submitHandler: function() {
+				var produce = {};
+				produce.produceName = $('#name').val();
+				produce.produceType = $('#type option:selected').val();
+				produce.producePrice = $('#price').val();
+				produce.produceDesc = $('#message').val();
+				produce.produceImageUrl = $('#img').attr('src');
+				produce.commodityStructrueId = $('#catalog').val();
+				produce.produceNavImgUrl = $('#imgNav').attr('src');
+				$.ajax({
+					url: '/PC/addproduce',
+					data: produce,
+					dataType: 'json',
+					type: 'post',
+					success: function(result) {
+						deleteData();
+						layer.msg('添加成功', {time: 500, icon: 3});
+					}
+				});
+			}
+		});
+		function deleteData() {
+			$('#name').val('');
+			$('#type option:selected').val('0');
+			$('#price').val('');
+			$('#message').val('');
+			$('#img').attr('src', '/images/demo.jpg');
+			$('#catalog').val('商品目录');
+			$('#imgNav').attr('src', '/images/demo1.jpg');
+		}
+		$('#uploadImage').on('click', function() {
+			layer.open({
+				title: '选择图片',
+				shade: 0.5,
+				type: 2,
+				area: ['357px', '405px'],
+				content: '/pages/base/cutImage.html',
+				yes: function(index, layero) {
+					layer.close(index);
+				},
+				end: function() {
+					console.log('jj')
+				}
+			});
+		});
+		$('#uploadNavImage').on('click', function() {
+			layer.open({
+				title: '选择图片',
+				shade: 0.5,
+				type: 2,
+				area: ['357px', '405px'],
+				content: '/pages/base/cutNavImage.html',
+				yes: function(index, layero) {
+					layer.close(index);
+				},
+				end: function() {
+					console.log('jj')
+				}
+			});
+		});
+		$('#chooseCatalog').on('click', function() {
+			layer.open({
+				title: '选择目录信息',
+				shade: 0.5,
+				type: 2,
+				area: ['357px', '505px'],
+				content: '/pages/common/chooseCatalog.html',
+				yes: function(index, layero) {
+					layer.close(index);
+				},
+				end: function() {
+					console.log('jj');
+				}
+			});
+		});
+		$('#cancel').on('click', function() {
+			deleteData();
+		});
+		$.ajax({
+			url: '/PC/listmyproducedata',
+			dataType: 'json',
+			type: 'post',
+			success: function(result) {
+				console.log(result);
+				for (var i = 0; i < result.length; i++) {
+					$('.team-v3').append('<div class="col-md-6 text-center" style="margin: 10px 0;">'
+						+ '<div class="team-img" style="height: 240px;width: 240px; margin-left: 30px;">'
+						+ '<img class="img-thumbnail" src="' + result[i].produceImageUrl + '" id="friend1" alt="好友推荐一">'
+						+ '<div class="team-hover">'
+						+ '<span>' + result[i].produceName + '</span> <small>' + result[i].producePrice + '$</small>'
+						+ '<p>' + result[i].produceDesc + '</p>'
+						+ '<button class="btn btn-info" id="friendDetail1" value="' + result[i].produceId + '">查看详情</button>'
+						+ '</div>'
+						+ '</div>'
+						+ '</div>'
+					);
+				}
+			}
+		});
+		$('.team-v3').on('click', '#friendDetail1', function() {
+			location.href = '/pages/common/produceDetail.html?produceId=' + $(this).val();
+// 			layer.msg($(this).val(), {time: 500, icon: 3});
+		});
+		/* ------------------------根部设置------------------------ */
+		$.ajax({
+			url : "/usercontroller/getuserdetail",
+			type : "get",
+			dataType : "json",
+			success : function(result) {
+				console.log(result);
+				$('#userImg').attr('src', result.userImg);
+			}
+		});
+		$('#aboutMe').on('click', function() {
+			layer.msg('我们是一个关于电子商务的推荐系统，部分功能静候期待');
+		});
+		$('#recentMessage').on('click', function() {
+			$.ajax({
+				url: '/sysdictcontroller/listsysdictbytype',
+				data: {sysDictType: 'message'},
+				dataType: 'json',
+				type: 'post',
+				success: function(result) {
+					if (result.length == 0) {
+						layer.msg('暂无消息信息！！！', {time: 700});
+					} else {
+						var message = ''
+						for (var i = 0; i < result.length; i++) {
+							message = message + result[i].sysDictName + ';';
+						}
+						layer.msg(message);
+					}
+				}
+			})
+		});
+		/* ------------------------根部设置------------------------ */
+	});
+</script>
+</html>

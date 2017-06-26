@@ -1,0 +1,16 @@
+package pers.guanzf.common.core.service;
+
+import pers.guanzf.common.core.model.info.PersonInfo;
+import pers.guanzf.common.core.model.info.PersonProduceInfo;
+
+public interface PersonService {
+
+	PersonProduceInfo getProduceInfoByPersonId(String personId);
+	
+	PersonInfo getProduceInfoByUsername(String username);
+	
+	int insertPersonInfo(PersonInfo personInfo);
+	
+	int insertPersonProduceInfo(String personId, String produceId);
+
+}

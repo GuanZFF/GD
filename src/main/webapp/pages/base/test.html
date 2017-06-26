@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="/plugins/dataTables/DataTables-1.10.12/media/css/dataTables.bootstrap.min.css" rel="stylesheet">
+<link href="/plugins/sky-forms-pro/skyforms/custom/custom-sky-forms.css" rel="stylesheet">
+<link href="/plugins/sky-forms-pro/skyforms/css/sky-forms.css" rel="stylesheet">
+<link href="/assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+<link href="/css/style.css" rel="stylesheet">
+<link href="/plugins/jcrop/jquery.Jcrop.min.css" rel="stylesheet">
+</head>
+<body>
+	<div class="container">
+		<input type="button" id="file" name="file" class="btn btn-info" value="test"/>
+		<img alt="图片" src="/images/demo.jpg" id="img">
+	</div>
+</body>
+<script src="/plugins/jquery/jquery.min.js"></script>
+<script src="/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="/plugins/dataTables/DataTables-1.10.12/media/js/jquery.dataTables.min.js"></script>
+<script src="/assets/plugins/sky-forms-pro/skyforms/js/jquery.validate.min.js"></script>
+<script src="/assets/plugins/sky-forms-pro/skyforms/js/jquery-ui.min.js"></script>
+<script src="/javascript/ajaxfileupload.js"></script>
+<script src="/plugins/layer-master/src/layer.js"></script>
+<script src="/plugins/jcrop/jquery.Jcrop.min.js"></script>
+<script>
+	$(document).ready(function() {
+		$("#file").on('click', function() {
+			layer.open({
+				title: '添加字典数据',
+				shade: 0.5,
+				type: 2,
+				area: ['357px', '405px'],
+				content: '/pages/base/cutImage.html',
+				yes: function(index, layero) {
+					layer.close(index);
+				},
+				end: function() {
+					console.log('jj')
+				}
+			});
+		});
+		
+	})
+</script>
+</html>

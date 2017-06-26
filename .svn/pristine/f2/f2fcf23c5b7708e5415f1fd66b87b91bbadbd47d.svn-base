@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="/plugins/dataTables/DataTables-1.10.12/media/css/dataTables.bootstrap.min.css" rel="stylesheet">
+<link href="/plugins/sky-forms-pro/skyforms/custom/custom-sky-forms.css" rel="stylesheet">
+<link href="/plugins/sky-forms-pro/skyforms/css/sky-forms.css" rel="stylesheet">
+<link href="/assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+<link href="/css/style.css" rel="stylesheet">
+<link href="/javascript/css/setting.css" rel="stylesheet">
+<style>
+	.sky-form .select i {
+  		top: 10px;
+ 		width: 9px;
+  		right: 9px;
+  		height: 6px;
+	}
+</style>
+</head>
+<body style="overflow:-Scroll;overflow-x:hidden">
+	<div class="container">
+		<!-- NAVBAR-FIXED-TOP属性可以使导航栏固定在顶端 -->
+		<div id="header" class="row navbar navbar-default" role="navigation" style="height: 80px; margin-bottom: 0;" >
+			<div class="col-md-1"></div>
+			<div class="navbar-header col-md-1">
+				<a href="/pages/common/BaseHeader.html" class="navbar-brand"><img alt="LOGO" src="/images/logo.jpg" style="width: 50px; height: 50px;"></a>
+			</div>
+			<ul class="nav navbar-nav col-md-7" id="nav">
+				<li><a href="/pages/common/BaseHeader.html">系统首页</a></li>
+				<li><a href="/pages/common/registerDeal.html">注册管理</a></li>
+				<li><a href="/pages/common/produceDetail.html">商品详情</a></li>
+				<li><a href="/pages/common/registerProduce.html">注册商品</a></li>
+				<li><a href="/pages/common/sysDictManage.html">字典管理</a></li>
+			</ul>
+			<ul class="nav navbar-nav col-md-2" style="border-right: 0;font-size: 19px;">
+				<li class="col-md-4 text-center" id="liSearch"><a href="##"><span class="glyphicon glyphicon-search" id="search"></span></a></li>
+				<li class="col-md-4 text-center" style="padding: 0;"><a href="/pages/common/personInfo.html"><span class="glyphicon glyphicon-user"></span></a></li>
+				<li class="col-md-4 text-center"><a href="/pages/common/setting.html"><span class="glyphicon glyphicon-cog"></span></a></li>
+			</ul>
+			<div class="col-md-1"></div>
+		</div>
+		<div class="row" style="position: absolute; display: none;z-index: 1;" id="search-open">
+			<div class="col-xs-3 col-xs-offset-8 input-group" style="padding: 10px;background-color: white; opacity:1;">
+				<input type="text" class="form-control" placeholder="Search" id="inputSearch"> 
+				<span class="input-group-btn">
+					<button class="btn btn-info" type="button" id="btnSearch">Go</button>
+				</span>
+			</div>
+		</div>
+		<!-- 导航结束 -->
+		<!-- 商品详情信息 -->
+		<div class="row" style="background-color: #F2F2F2; padding: 40px;">
+			<div class="col-md-4 col-md-offset-1" style="margin-top: 20px;">
+				<div class="row">
+					<img alt="图片" src="/images/demo.jpg" id="imgContext" class="img-thumbnail col-md-12">
+				</div>
+				<div class="row" style="margin: 20px 0;">
+					<button class="col-md-5 btn btn-info rounded" id="addBuy">添加购买</button>
+					<button class="col-md-5 col-md-offset-2 btn btn-info rounded" id="addLike">添加喜欢</button>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="row text-center">
+					<h1>商品详细信息</h1>
+					<hr style="height:1px;border:none;border-top:1px dashed #0066CC;margin-left: 15px;">
+					<div class="col-md-8">
+						<div class="col-md-12 text-left" id="produce">
+							<h2 id="produceName">商品名称: </h2>
+							<h2 id="produceprice">商品价格: </h2>
+							<h2 id="producePraiseNum">好评数量:</h2>
+							<h2 id="produceBadNum">差评数量:</h2>
+							<h2 id="produceSellNum">购买数量:</h2>
+							<h2 id="produceTodaySellNum">今日购买数量:</h2>
+							<h2 id="producePersonName">注册人:</h2>
+						</div>
+					</div>
+					<div class="col-md-4 text-left" id="comment">
+						<button class="btn btn-info rounded col-md-12" id="addCommentImg" style="margin: 10px 0;">添加评论图片</button>
+						<img alt="评论图片" src="/images/demo.jpg" class="col-md-12" id="img" style="margin: 10px 0;padding: 0;">
+						<div class="text-center">
+							<ul class="list-inline star-vote" id="star">
+                            	<li><i class="color-green fa fa-star-o" style="font-size: x-large;"></i></li>
+                            	<li><i class="color-green fa fa-star-o" style="font-size: x-large;"></i></li>
+                            	<li><i class="color-green fa fa-star-o" style="font-size: x-large;"></i></li>
+                            	<li><i class="color-green fa fa-star-o" style="font-size: x-large;"></i></li>
+                            	<li><i class="color-green fa fa-star-o" style="font-size: x-large;"></i></li>
+                        	</ul>
+						</div>
+						<div class="col-md-12 sky-form" style="margin: 10px 0;padding: 0;">
+							<label class="textarea">
+                            	<textarea rows="3" name="message" id="message" placeholder="评论信息"></textarea>
+                            </label>
+						</div>
+						<button class="btn btn-info rounded col-md-12" id="submitCommentImg" style="margin: 10px 0;">添加评论</button>
+					</div>
+				</div>
+			</div>
+			<div class="co-md-1">
+				
+			</div>
+		</div>
+		<div class="row" style="margin-top: 20px;">
+			<div class="col-md-8 col-md-offset-2">
+				<table class="table table-striped table-bordered table-hover text-center" id="sysdict">
+					<thead>
+						<tr>
+							<td>编号</td>
+							<td>评论人</td>
+							<td>评论人性别</td>
+							<td>评论时间</td>
+							<td>评论值</td>
+							<td>评论信息</td>
+							<td>评论图片</td>
+						</tr>
+					</thead>
+					<tbody style=""></tbody>
+				</table>
+			</div>
+		</div>
+		<!-- 根部设置 -->
+		<!-- <div class="row" style="padding-left: 120px;">
+			<div class="col-md-1 text-center" id="username" style="display:none; z-index:1;padding: 5px 10px 0 10px;background-color: #5E5E5E;border-bottom: 1px solid white;">
+				<h3 class="#5E5E5E" style="margin: 0px;color: black;">姓名</h3>
+			</div>
+		</div> -->
+		<!-- 根部设置 -->
+		<div id="footer" class="row" style="background-color: #5E5E5E">
+			<div class="col-md-2 text-right" style="margin: 20px 0;">
+				<a href="#"><img alt="图片" class="img-circle" id="userImg" src="/images/a7.jpg" style="width: 100px;height: 100px;"></a>
+			</div>
+			<div class="col-md-2" style="padding: 45px 0;">
+				<div style="background-color: white;padding: 5px 10px;display: none;border-radius:10px !important;" id="username">
+					<h3 class="#5E5E5E" style="margin: 0px;color: black;" id="usernameh">姓名</h3>
+				</div>
+			</div>
+			<div class="col-md-2 text-center col-md-offset-3" style="padding: 30px 0;">
+				<h3 id="aboutMe" style="color: #000000;">关于我们</h3>
+				<h3 id="recentMessage" style="color: #000000;">最新消息</h3>
+			</div>
+			<div class="col-md-3 text-center">
+				<div class="row" style="margin-top: 30px;">
+					<h3 style="color: #000000;">联系我们</h3>
+					<h3 style="color: #000000;">1234567890</h3>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script src="/plugins/jquery/jquery.min.js"></script>
+<script src="/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="/plugins/dataTables/DataTables-1.10.12/media/js/jquery.dataTables.min.js"></script>
+<script src="/assets/plugins/sky-forms-pro/skyforms/js/jquery.validate.min.js"></script>
+<script src="/assets/plugins/sky-forms-pro/skyforms/js/jquery-ui.min.js"></script>
+<script src="/javascript/ajaxfileupload.js"></script>
+<script src="/plugins/layer-master/src/layer.js"></script>
+<script src="/javascript/js/setting.js"></script>
+
+<script>
+	$(function() {
+		var table;
+		/* 导航栏搜索设置 */
+		$('#liSearch,#btnSearch').on('click', function () {
+			console.log('jjjj');
+			if($('#search').hasClass('glyphicon-search')){
+				$('#search-open').fadeIn(500);
+                $('#search').removeClass('glyphicon-search');
+                $('#search').addClass('glyphicon-remove');
+			} else {
+				$('#search-open').fadeOut(500);
+                $('#search').addClass('glyphicon-search');
+                $('#search').removeClass('glyphicon-remove');
+			}
+		});
+		$('#btnSearch').on('click', function() {
+			var name = $('#inputSearch').val();
+			$.ajax({
+				data: {produceName: name},
+				dataType: 'json',
+				type: 'post',
+				url: '/PC/getproduceinfobyname',
+				success: function(result) {
+					if (result != null && result != '' && result.produceId != null && result.produceId != '') {
+						location.href = '/pages/common/produceDetail.html?produceId=' + result.produceId;
+					} else {
+						layer.msg('此数据不存在');
+					}
+				}
+			})
+		});
+		/* 导航栏搜索设置 */
+		
+		/* 提交评论设置 */
+		$('#submitCommentImg').on('click', function() {
+			var personProduce = {};
+			personProduce.commentImgUrl = $('#img').attr('src');
+			personProduce.comment = $('#message').val();
+			personProduce.commentValue = $(this).parent().find('.fa-star').length;
+			personProduce.produceId = GetRequest()['produceId'];
+			console.log(personProduce);
+			$.ajax({
+				url: '/personcontroller/insertpersonproduceinfo',
+				data: personProduce,
+				dataType: 'json',
+				type: 'post',
+				success: function(result) {
+					if (result == 1) {
+						layer.msg('提交成功', {time: 600, icon: 4});
+						$('#comment button,#comment textarea').attr('disabled', 'disabled');
+						$('#img').attr('src', '/images/demo.jpg');
+						$('#textarea').val('');
+						getProduceDetail();
+					} else {
+						layer.msg('提交失败', {time: 600, icon: 4});
+					}
+				}
+			});
+		});
+		
+		$('#comment button,#comment textarea').attr('disabled', 'disabled');
+		function GetRequest() {
+			var url = decodeURI(location.search);
+			var theRequest = new Object();
+			if (url.indexOf("?") != -1) {
+				var str = url.substr(1);
+				strs = str.split("&");
+				for (var i = 0; i < strs.length; i++) {
+					theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+				}
+			}
+			return theRequest;
+		}
+		$('#star li').on('click', function() {
+			if ($(this).children().hasClass('fa-star-o')) {
+				$(this).children().removeClass('fa-star-o');
+				$(this).children().addClass('fa-star');
+			} else {
+				$(this).children().removeClass('fa-star');
+				$(this).children().addClass('fa-star-o');
+			}
+		});
+		$('#addBuy').on('click', function() {
+			$.ajax({
+				url: '/PC/buyproduceinfo',
+				data: {produceId: GetRequest()['produceId']},
+				dataType: 'json',
+				type: 'post',
+				success: function(result) {
+					console.log(result);
+					if (result.flag != 0) {
+						$('#comment button,#comment textarea').removeAttr('disabled');
+					}
+					layer.msg(result.message, {time: 900, icon: 4});
+				}
+			});
+		});
+		$('#addLike').on('click', function() {
+			
+		});
+		getProduceDetail();
+		function getProduceDetail() {
+			var produceId = GetRequest()['produceId'];
+			$.ajax({
+				url: '/PC/getproduceinfo',
+				data: {produceId: GetRequest()['produceId']},
+				dataType: 'json',
+				type: 'post',
+				success: function(result) {
+					$('#imgContext').attr('src', result.produceImageUrl);
+					$('#produce #produceName').append(result.produceName);
+					$('#produce #produceprice').append(result.producePrice + '￥');
+					$('#produce #producePraiseNum').append(result.producePraiseNum);
+					$('#produce #produceBadNum').append(result.produceBadNum);
+					$('#produce #produceSellNum').append(result.produceSellNum);
+					$('#produce #produceTodaySellNum').append(result.produceTodayNum);
+					$('#produce #producePersonName').append(result.userInfo.userName);
+				}
+			});
+			$.ajax({
+				url: '/PC/listcommentinfo',
+				data: {produceId: GetRequest()['produceId']},
+				dataType: 'json',
+				type: 'post',
+				success: function(result) {
+					if (table) {
+						table.api().destroy();
+					}
+					initDataTable(result);
+				}
+			});
+		}
+		$.ajax({
+			url: '/sysdictcontroller/listsysdictbytype',
+			data: {sysDictType: 'produceType'},
+			dataType: 'json',
+			type: 'post',
+			success: function(result) {
+				
+			}
+		});
+		/* 初始化表结构 */
+		function initDataTable(data) {
+			var i = 0;
+			table = $('#sysdict').dataTable({
+				data : data,
+				searching : false,
+				paging : false,
+				info : false,
+				ordering : false,
+				columns:[{
+					'render': function(data, type, full, meta) {
+						return i++;
+					}
+				},{
+					'data': 'personName'
+				},{
+					'data': 'personSex'
+				},{
+					'data': 'commentTime'
+				},{
+					'data': 'commentValue',
+					'render': function(data, type, full, meta) {
+						return getStar(data);
+					}
+				},{
+					'data': 'comment'
+				}, {
+					'data': 'commentUrl',
+					'render': function(data, type, full, meta) {
+						return '<button class="btn btn-info rounded" value="' + data + '" id="commentImg" >图片</button>';
+					}
+				}]
+			});
+			$("#sysdict tbody button").attr("class", "btn btn-info");
+		}
+		$('#sysdict').on('click', '#commentImg', function() {
+			layer.open({
+				title: '选择图片',
+				shade: 0.5,
+				type: 2,
+				anim: 6,
+				area: ['400px', '442px'],
+				content: '/pages/base/showImage.html?img=' + $(this).val(),
+				yes: function(index, layero) {
+					layer.close(index);
+				},
+				end: function() {
+					console.log('jj')
+				}
+			});
+		})
+		$('#addCommentImg').on('click', function() {
+			layer.open({
+				title: '评论的图片信息',
+				shade: 0.5,
+				type: 2,
+				area: ['357px', '405px'],
+				content: '/pages/base/cutImage.html',
+				yes: function(index, layero) {
+					layer.close(index);
+				},
+				end: function() {
+					console.log('jj')
+				}
+			});
+		});
+		/* ------------------------根部设置------------------------ */
+		$.ajax({
+			url : "/usercontroller/getuserdetail",
+			type : "get",
+			dataType : "json",
+			success : function(result) {
+				console.log(result);
+				$('#userImg').attr('src', result.userImg);
+				$('#usernameh').html(result.userName);
+			}
+		});
+		$('#aboutMe').on('click', function() {
+			layer.msg('我们是一个关于电子商务的推荐系统，部分功能静候期待');
+		});
+		$('#recentMessage').on('click', function() {
+			$.ajax({
+				url: '/sysdictcontroller/listsysdictbytype',
+				data: {sysDictType: 'message'},
+				dataType: 'json',
+				type: 'post',
+				success: function(result) {
+					if (result.length == 0) {
+						layer.msg('暂无消息信息！！！', {time: 700});
+					} else {
+						var message = ''
+						for (var i = 0; i < result.length; i++) {
+							message = message + result[i].sysDictName + ';';
+						}
+						layer.msg(message);
+					}
+				}
+			})
+		});
+		$('#userImg').on('mouseover', function() {
+			if ($('#username').css('display') == 'none') {
+				$('#username').fadeIn(500);
+				setTimeout(function() {
+					$('#username').fadeOut(500);
+				}, 2000);
+			}
+		});
+		/* ------------------------根部设置------------------------ */
+		function getStar(value) {
+			if (value == '0.0') {
+				return '<ul class="list-inline star-vote">'
+            	+ '<li><i class="color-green fa fa-star-o"></i></li>'
+            	+ '<li><i class="color-green fa fa-star-o"></i></li>'
+            	+ '<li><i class="color-green fa fa-star-o"></i></li>'
+            	+ '<li><i class="color-green fa fa-star-o"></i></li>'
+            	+ '<li><i class="color-green fa fa-star-o"></i></li>'
+            	+ '</ul>';
+			} else if (value == '1.0') {
+				return '<ul class="list-inline star-vote">'
+            	+ '<li><i class="color-green fa fa-star"></i></li>'
+            	+ '<li><i class="color-green fa fa-star-o"></i></li>'
+            	+ '<li><i class="color-green fa fa-star-o"></i></li>'
+            	+ '<li><i class="color-green fa fa-star-o"></i></li>'
+            	+ '<li><i class="color-green fa fa-star-o"></i></li>'
+            	+ '</ul>';
+			} else if (value == '2.0') {
+				return '<ul class="list-inline star-vote">'
+            	+ '<li><i class="color-green fa fa-star"></i></li>'
+            	+ '<li><i class="color-green fa fa-star"></i></li>'
+            	+ '<li><i class="color-green fa fa-star-o"></i></li>'
+            	+ '<li><i class="color-green fa fa-star-o"></i></li>'
+            	+ '<li><i class="color-green fa fa-star-o"></i></li>'
+            	+ '</ul>';
+			} else if (value == '3.0') {
+				return '<ul class="list-inline star-vote">'
+            	+ '<li><i class="color-green fa fa-star"></i></li>'
+            	+ '<li><i class="color-green fa fa-star"></i></li>'
+            	+ '<li><i class="color-green fa fa-star"></i></li>'
+            	+ '<li><i class="color-green fa fa-star-o"></i></li>'
+            	+ '<li><i class="color-green fa fa-star-o"></i></li>'
+            	+ '</ul>';
+			} else if (value == '4.0') {
+				return '<ul class="list-inline star-vote">'
+            	+ '<li><i class="color-green fa fa-star"></i></li>'
+            	+ '<li><i class="color-green fa fa-star"></i></li>'
+            	+ '<li><i class="color-green fa fa-star"></i></li>'
+            	+ '<li><i class="color-green fa fa-star"></i></li>'
+            	+ '<li><i class="color-green fa fa-star-o"></i></li>'
+            	+ '</ul>';
+			} else if (value == '5.0') {
+				return '<ul class="list-inline star-vote">'
+            	+ '<li><i class="color-green fa fa-star"></i></li>'
+            	+ '<li><i class="color-green fa fa-star"></i></li>'
+            	+ '<li><i class="color-green fa fa-star"></i></li>'
+            	+ '<li><i class="color-green fa fa-star"></i></li>'
+            	+ '<li><i class="color-green fa fa-star"></i></li>'
+            	+ '</ul>';
+			}
+		}
+	});
+</script>
+<script src="/assets/plugins/Angular/angular.min.js"></script>
+</html>

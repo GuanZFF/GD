@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>选择目录</title>
+<link href="/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="/plugins/dataTables/DataTables-1.10.12/media/css/dataTables.bootstrap.min.css" rel="stylesheet">
+<link href="/plugins/sky-forms-pro/skyforms/custom/custom-sky-forms.css" rel="stylesheet">
+<link href="/plugins/sky-forms-pro/skyforms/css/sky-forms.css" rel="stylesheet">
+<link href="/assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+<link href="/css/style.css" rel="stylesheet">
+<style>
+	.sky-form .select i {
+  		top: 10px;
+ 		width: 9px;
+  		right: 9px;
+  		height: 6px;
+	}
+</style>
+</head>
+<body>
+	<div class="container">
+		<div class="col-md-10 col-md-offset-1">
+			<form class="sky-form">
+				<header>选择目录</header>
+				<fieldset>
+					<section>
+						<label class="select"> 
+							<select name="可修改" id="firstCatalog">
+								<option value="0" selected="" disabled="">一级目录</option>
+							</select>
+							<i></i>
+						</label>
+					</section>
+					<section>
+						<label class="select"> 
+							<select name="可修改" id="secondCatalog">
+								<option value="0" selected="" disabled="">二级目录</option>
+							</select>
+							<i></i>
+						</label>
+					</section>
+					<section>
+						<label class="select"> 
+							<select name="可修改" id="thirdCatalog">
+								<option value="0" selected="" disabled="">三级目录</option>
+							</select>
+							<i></i>
+						</label>
+					</section>
+					<section>
+						<label class="select"> 
+							<select name="可修改" id="fourthCatalog">
+								<option value="0" selected="" disabled="">四级目录</option>
+							</select>
+							<i></i>
+						</label>
+					</section>
+				</fieldset>
+				<footer>
+					<div class="row text-center">
+						<div class="col-xs-6">
+							<button type="button" class="btn btn-success" id="submit">
+								<span class="glyphicon glyphicon-ok-circle"></span> 提交
+							</button>
+						</div>
+						<div class="col-xs-6">
+							<button type="button" class="btn btn-danger" id="cancel">
+								<span class="glyphicon glyphicon-remove-sign"></span> 取消
+							</button>
+						</div>
+					</div>
+				</footer>
+			</form>
+		</div>
+	</div>
+</body>
+<script src="/plugins/jquery/jquery.min.js"></script>
+<script src="/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="/plugins/layer-master/src/layer.js"></script>
+<script src="/plugins/dataTables/DataTables-1.10.12/media/js/jquery.dataTables.min.js"></script>
+<script src="/assets/plugins/sky-forms-pro/skyforms/js/jquery.validate.min.js"></script>
+<script src="/assets/plugins/sky-forms-pro/skyforms/js/jquery-ui.min.js"></script>
+<script src="/javascript/ajaxfileupload.js"></script>
+<!-- JS逻辑代码 -->
+<script>
+	$(document).ready(function() {
+		getCatalogByStructrue('0');
+		function getChildCatalog(fatherId, floor) {
+			if (fatherId == null || fatherId == '') {
+				return;
+			}
+			$.ajax({
+				url: '/PC/listcommoditystructrueinfos',
+				data: {commodityStructrueFartherId: fatherId},
+				dataType: 'json',
+				type: 'post',
+				success: function(result) {
+					for (var i = 0; i < result.length; i++) {
+						if (floor == '1') {
+							$('#secondCatalog').append('<option value="' + result[i].commodityStructrueId + '">' + result[i].commodityStructrueName + '</option>');
+						} else if (floor == '2') {
+							$('#thirdCatalog').append('<option value="' + result[i].commodityStructrueId + '">' + result[i].commodityStructrueName + '</option>');
+						} else if (floor == '3') {
+							$('#fourthCatalog').append('<option value="' + result[i].commodityStructrueId + '">' + result[i].commodityStructrueName + '</option>');
+						}
+					}
+				}
+			});
+		}
+		function getCatalogByStructrue(floor) {
+			if (floor == null || floor == '') {
+				return;
+			}
+			$.ajax({
+				url: '/PC/listcommoditystructruebyfloor',
+				data: {floor: floor},
+				dataType: 'json',
+				type: 'post',
+				success: function(result) {
+					console.log(result);
+					for (var i = 0; i < result.length; i++) {
+						$('#firstCatalog').append('<option value="' + result[i].commodityStructrueId + '">' + result[i].commodityStructrueName + '</option>');
+					}
+				}
+			})
+		}
+		$('#firstCatalog').on('change', function() {
+			var value = $('#firstCatalog option:selected').val();
+			$('#firstCatalog').attr('disabled', 'disabled');
+			getChildCatalog(value, '1');
+		});
+		$('#secondCatalog').on('change', function() {
+			var value = $('#secondCatalog option:selected').val();
+			$('#secondCatalog').attr('disabled', 'disabled');
+			getChildCatalog(value, '2');
+		});
+		$('#thirdCatalog').on('change', function() {
+			var value = $('#thirdCatalog option:selected').val();
+			$('#thirdCatalog').attr('disabled', 'disabled');
+			getChildCatalog(value, '3');
+		});
+		$('#fourthCatalog').on('change', function() {
+			var value = $('#fourthCatalog option:selected').val();
+			$('#fourthCatalog').attr('disabled', 'disabled');
+		});
+		function closeWindow() {
+			var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
+			parent.layer.close(index);
+		}
+		$('#cancel').on('click', function() {
+			closeWindow();
+		});
+		$('#submit').on('click', function() {
+			var catalog = {};
+			if ($('#firstCatalog option:selected').val() != 0) {
+				catalog = $('#firstCatalog option:selected').val();
+			}
+			if ($('#secondCatalog option:selected').val() != 0) {
+				catalog = $('#secondCatalog option:selected').val();
+			}
+			if ($('#thirdCatalog option:selected').val() != 0) {
+				catalog = $('#thirdCatalog option:selected').val();
+			}
+			if ($('#fourthCatalog option:selected').val() != 0) {
+				catalog = $('#fourthCatalog option:selected').val();
+			}
+			parent.$('#catalog').val(catalog);
+			closeWindow();
+		});
+	});
+</script>
+</html>

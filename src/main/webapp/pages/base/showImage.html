@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>显示图片信息</title>
+<link href="/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<img alt="图片" src="/images/demo.jpg" style="height: 400px;width: 400px;">
+		</div>
+	</div>
+</body>
+<script src="/plugins/jquery/jquery.min.js"></script>
+<script src="/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="/plugins/layer-master/src/layer.js"></script>
+<script>
+	$(document).ready(function() {
+		function GetRequest() {
+			var url = decodeURI(location.search);
+			var theRequest = new Object();
+			if (url.indexOf("?") != -1) {
+				var str = url.substr(1);
+				strs = str.split("&");
+				for (var i = 0; i < strs.length; i++) {
+					theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+				}
+			}
+			return theRequest;
+		}
+		if (GetRequest()['img'] != null || GetRequest()['img'] != '') {
+			$('img').attr('src', GetRequest()['img']);
+		}
+		function closeWindow() {
+			var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
+			parent.layer.close(index);
+		}
+	});
+</script>
+</html>

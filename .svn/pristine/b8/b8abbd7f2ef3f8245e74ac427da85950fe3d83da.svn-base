@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>添加字典信息</title>
+<link href="/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="/plugins/dataTables/DataTables-1.10.12/media/css/dataTables.bootstrap.min.css" rel="stylesheet">
+<link href="/assets/plugins/sky-forms-pro/skyforms/css/sky-forms.css" rel="stylesheet">
+<link href="/assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+<link href="/plugins/jcrop/jquery.Jcrop.min.css" rel="stylesheet">
+</head>
+<body>
+	<div class="container">
+		<div class="row" style="margin: 0 70px;background-color: #C1C1C1;">
+			<form class="sky-form" id="sky-form">
+				<fieldset>
+					<section>
+						<label class="input"> 
+							<i class="icon-append fa fa-user"></i> 
+							<input type="text" name="name" id="name" placeholder="消息"> 
+							<b class="tooltip tooltip-bottom-right">Needed to enter the message</b>
+						</label>
+					</section>
+					<section>
+						<label class="select"> 
+							<select name="可修改" id="edit">
+								<option value="0" selected="" disabled="">是否可修改</option>
+							</select> 
+							<i></i>
+						</label>
+					</section>
+				</fieldset>
+				<footer>
+					<div class="row text-center">
+						<div class="col-xs-6">
+							<button type="submit" class="btn btn-info" id="submit">
+								<span class="glyphicon glyphicon-ok-circle"></span> 提交
+							</button>
+						</div>
+						<div class="col-xs-6">
+							<button type="button" class="btn btn-info" id="cancel">
+								<span class="glyphicon glyphicon-remove-sign"></span> 取消
+							</button>
+						</div>
+					</div>
+				</footer>
+			</form>
+		</div>
+	</div>
+</body>
+<script src="/plugins/jquery/jquery.min.js"></script>
+<script src="/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="/plugins/dataTables/DataTables-1.10.12/media/js/jquery.dataTables.min.js"></script>
+<script src="/plugins/layer-master/src/layer.js"></script>
+<script src="/assets/plugins/sky-forms-pro/skyforms/js/jquery.validate.min.js"></script>
+
+<script>
+	$(document).ready(function() {
+		$.ajax({
+			dataType: 'json',
+			type: 'post',
+			url: '/PC/listmyproducedata',
+			success: function(result) {
+				console.log(result);
+				if (result) {
+					for (var i = 0; i < result.length; i++) {
+						$('#edit').append('<option value="' + result[i].produceId + '">' + result[i].produceName + '</option>')
+					}
+				} else {
+					
+				}
+			}
+		});
+		// 添加数据处理步骤
+		$('#sky-form').validate({// jquery的验证设置信息
+			rules: {// 验证规则
+				name: {
+					required: true
+				}
+			},
+			valudateCode: {// 验证时的信息反馈
+				required: '数据不能为空'
+			},
+			errorPlacement: function(error, element) {// 验证时的错误提示位置设置 有多个错误时执行多次
+				
+			},
+			submitHandler: function (){// 提交form时的执行函数
+				var message = new Object();
+				message.messageInfo = $('#name').val();
+				message.messageProduceId = $('#edit option:selected').val();
+				if (message.messageProduceId == '0') {
+					layer.msg('请选择商品');
+					return;
+				}
+				$.ajax({
+					url: '/usercontroller/insertmessagemanage',
+					data: message,
+					dataType: 'json',
+					type: 'post',
+					success: function(result) {
+						if (result == 1) {
+							layer.msg('设置成功', {time: 500, icon: 1});
+							setTimeout(function() {
+								closeWindow();
+							}, 700);
+						} else {
+							layer.msg('系统错误，请联系管理员');
+						}
+					}
+				})
+			}
+		});
+		$('#cancel').on('click', function() {
+			closeWindow();
+		});
+		function closeWindow() {
+			var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
+			parent.layer.close(index);
+		}
+	});
+</script>
+</html>

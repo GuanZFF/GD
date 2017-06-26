@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="/plugins/dataTables/DataTables-1.10.12/media/css/dataTables.bootstrap.min.css" rel="stylesheet">
+<link href="/assets/plugins/sky-forms-pro/skyforms/css/sky-forms.css" rel="stylesheet">
+<link href="/assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+<link href="/plugins/jcrop/jquery.Jcrop.min.css" rel="stylesheet">
+<style>
+	.container {
+		padding-left:0px;
+		padding-right:0px;
+		width: 100%;
+	}
+	.navbar-brand {
+		padding-top: 0;
+		padding-left: 0;
+	}
+	.navbar-default {
+		background-color: white;
+	}
+	.navbar {
+		padding-top: 15px;
+		border: 0;
+	}
+	.navbar .nav>li>a {
+	
+	}
+	.navbar-default #nav>li>a:hover, .navbar-default #nav>li>a:focus {
+		color: #333;
+		background-color: #CDC5BF;
+	}
+	#img-style:HOVER {
+		opacity: 0.9; 
+		color: #fff; 
+		background: rgba(0,0,0,0.8);
+	}
+</style>
+</head>
+<body>
+	<div class="container">
+		<!-- 导航栏设计 -->
+		<div id="header" class="row navbar navbar-default" role="navigation" style="height: 80px; margin-bottom: 0;" >
+			<div class="col-md-1"></div>
+			<div class="navbar-header col-md-1">
+				<a href="/pages/common/BaseHeader.html" class="navbar-brand"><img alt="LOGO" src="/images/logo.jpg" style="width: 50px; height: 50px;"></a>
+			</div>
+			<ul class="nav navbar-nav col-md-7" id="nav">
+				<li><a href="##">名师介绍</a></li>
+				<li><a href="##">成功案例</a></li>
+				<li><a href="##">关于我们</a></li>
+				<li><a href="##">关于我们</a></li>
+				<li><a href="##">分析数据</a></li>
+			</ul>
+			<ul class="nav navbar-nav col-md-2" style="border-right: 0;font-size: 19px;">
+				<li class="col-md-4 text-center"><a href="##"><span class="glyphicon glyphicon-search"></span></a></li>
+				<li class="col-md-4 text-center"><a href="##" id="user"><span class="glyphicon glyphicon-user"></span></a></li>
+				<li class="col-md-4 text-center"><a href="##"><span class="glyphicon glyphicon-cog"></span></a></li>
+			</ul>
+			<div class="col-md-1"></div>
+		</div>
+		<div class="row" style="background-color: #C4C4C4; padding: 50px 80px 70px;">
+			<div class="row col-md-8 col-md-offset-2" style="background-color: #EAEAEA; padding: 30px 50px;">
+				<div class="col-md-7">
+					<form class="sky-form" id="sky-form">
+						<header>注  册</header>
+						<fieldset>
+							<section>
+								<label class="input">
+									<i class="icon-append fa fa-user"></i>
+                                    <input type="text" name="username" id="username" placeholder="用户名">
+                                    <b class="tooltip tooltip-bottom-right">Needed to enter the account</b>
+								</label>
+							</section>
+							<section>
+								<label class="input"> 
+									<i class="icon-append fa fa-phone"></i> 
+									<input type="tel" name="tel" id="tel" placeholder="电话"> 
+									<b class="tooltip tooltip-bottom-right">Needed to verify your phone</b>
+								</label>
+							</section>
+							<section>
+								<label class="select"> 
+									<select name="可修改" id="edit">
+										<option value="0" selected="" disabled="">管理设置</option>
+										<option value="1">管理员</option>
+										<option value="2">用户</option>
+									</select> 
+									<i></i>
+								</label>
+							</section>
+							<section>
+								<label class="input">
+									<i class="icon-append fa fa-lock"></i>
+									<input type="password" name="password" id="password" placeholder="密码">
+									<b class="tooltip tooltip-bottom-right">Needed to verify your password</b>
+								</label>
+							</section>
+							<section>
+								<label class="input">
+									<i class="icon-append fa fa-lock"></i>
+									<input type="password" name="confirmPassword" id="confirmPassword" placeholder="确定密码">
+									<b class="tooltip tooltip-bottom-right">Needed to verify your password</b>
+								</label>
+							</section>
+                        </section>    
+						</fieldset>
+						<fieldset style="padding: 20px 30px;">
+							<div class="col-md-6 text-center">
+								<input type="submit" class="btn btn-info" placeholder="注册">
+							</div>
+							<div class="col-md-6 text-center">
+								<button id="reset" class="btn btn-info" type="button">重置</button>
+							</div>
+						</fieldset>
+					</form>
+				</div>
+				<div class="col-md-5 text-center">
+					<h1 class="row text-center">MY ACCOUNT</h1>
+					<hr style="height:1px;border:none;border-top:1px dashed #0066CC;">
+					<img alt="头像" src="/images/demo.jpg" class="img-circle" id="img" style="width: 200px;height: 200px;">
+					<div class="row" style="padding: 10px;">
+						<button type="button" id="uploadImg" class="btn btn-info col-md-10 col-md-offset-1">请选择</button>
+					</div>
+					<div class="row" style="padding: 0 10px;">
+						<button type="button" id="chooseImg" class="btn btn-info col-md-10 col-md-offset-1">选择图片</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script src="/plugins/jquery/jquery.min.js"></script>
+<script src="/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="/plugins/dataTables/DataTables-1.10.12/media/js/jquery.dataTables.min.js"></script>
+<script src="/plugins/layer-master/src/layer.js"></script>
+<script src="/assets/plugins/sky-forms-pro/skyforms/js/jquery.validate.min.js"></script>
+<script src="/plugins/jcrop/jquery.Jcrop.min.js"></script>
+<script>
+	$(document).ready(function() {
+		$('#sky-form').validate({
+			rules: {
+				username: {
+					required: true,
+				},
+				tel: {
+					required: true,
+					rangelength: [11, 11]
+				},
+				password: {
+					required: true
+				},
+				confirmPassword: {
+					required: true
+				}
+			},
+			messages: {
+				username: {
+					required: '不能为空',
+				},
+				tel: {
+					required: '不能为空',
+					rangelength: '长度为11'
+				},
+				password: {
+					required: '不能为空'
+				},
+				confirmPassword: {
+					required: '不能为空'
+				}
+			},
+			submitHandler: function() {
+				var imgUrl = $('#img').attr('src');
+				var password = $('#password').val();
+				var confirmPassword = $('#confirmPassword').val();
+				var edit = $('#edit option:selected').val();
+				if (password != confirmPassword) {
+					layer.msg('两次密码不同', {icon: 5, time: 500});
+					return;
+				}
+				var user = {userName: $('#username').val(), userPassword: $('#password').val(), userImg: imgUrl, userType: edit};
+				console.log(user);
+				/* $.ajaxFileUpload({
+                    url: '/usercontroller/adduser', 
+                    type: 'post',
+                    data : user,
+                    secureuri: false, //一般设置为false
+                    fileElementId: 'file', // 上传文件的id、name属性名
+                    dataType: 'JSON', //返回值类型，一般设置为json、application/json  这里要用大写  不然会取不到返回的数据
+                    success: function(data, status){  
+                        alert(data);
+                    },
+                    error: function(data, status, e){ 
+                        alert(e);
+                    }
+                }); */
+				$.ajax({
+					url: '/usercontroller/adduser',
+					data: user,
+					type: 'post',
+					dataType: 'json',
+					success: function(result) {
+						console.log('jjjj');
+						if (result.flag == 1) {
+							$(location).attr('href', '/pages/common/BaseHeader.html');
+						} else {
+							layer.msg(result.message, {time: 500, icon: 6});
+						}
+					},
+					error: function() {
+						console.log('error');
+					}
+				});
+			}
+		});
+		$('#reset').on('click', function() {
+			$('#username').val('');
+			$('#tel').val('');
+			$('#password').val('');
+			$('#confirmPassword').val('');
+		});
+		$('#uploadImg').on('click', function() {
+			layer.open({
+				title: '请选择你的头像',
+				shade: 0.5,
+				type: 2,
+				area: ['717px', '424px'],
+				content: '/pages/base/chooseImg.html',
+				yes: function(index, layero) {
+					layer.close(index);
+				}
+			});
+		});
+		$('#chooseImg').on('click', function() {
+			
+		});
+		$('a').on('click', function() {
+			var user = $(this).attr('id');
+			if (user != 'user') {
+				layer.msg('请先注册', {time: 700,icon: 6});
+			} else {
+				location.href = '/pages/base/Login.html'
+			}
+		});
+		$('#chooseImg').on('click', function() {
+			layer.open({
+				title: '选择图片',
+				shade: 0.5,
+				type: 2,
+				area: ['357px', '405px'],
+				content: '/pages/base/cutImage.html',
+				yes: function(index, layero) {
+					layer.close(index);
+				},
+				end: function() {
+					console.log('jj')
+				}
+			});
+		});
+	})
+</script>
+</html>

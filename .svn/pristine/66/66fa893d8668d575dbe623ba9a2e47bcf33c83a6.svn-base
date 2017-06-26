@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration   
+    PUBLIC "-//mybatis.org//DTD Config 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+
+	<typeAliases>
+		<typeAlias type="pers.guanzf.common.core.model.info.ProduceInfo" alias="ProduceInfo"/>
+		<typeAlias type="pers.guanzf.common.core.model.info.UserInfo" alias="UserInfo"/>
+		<typeAlias type="pers.guanzf.common.core.model.info.FriendInfo" alias="FriendInfo"/>
+		<typeAlias type="pers.guanzf.common.core.model.info.CommodityStructrueInfo" alias="CommodityStructrueInfo"/>
+		<typeAlias type="pers.guanzf.common.core.model.info.PersonInfo" alias="PersonInfo"/>
+		<typeAlias type="pers.guanzf.common.core.model.info.SysDictInfo" alias="SysDictInfo"/>
+		<typeAlias type="pers.guanzf.common.core.model.info.PersonProduceInfo" alias="PersonProduceInfo"/>
+	</typeAliases>
+
+</configuration>  

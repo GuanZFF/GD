@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:websocket="http://www.springframework.org/schema/websocket"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd  http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket.xsd http://www.springframework.org/schema/aop  http://www.springframework.org/schema/aop/spring-aop-3.1.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd"
+	default-autowire="byName">
+
+	<!-- 加载配置文件可以通过${}的形式调用配置文件 -->
+	<context:property-placeholder ignore-unresolvable="true" location="classpath*:/config.properties" />
+
+	<context:annotation-config />
+	<context:component-scan base-package="pers.guanzf" />
+
+	<!-- 没有这句话requestMapping注解不起作用 -->
+	<mvc:annotation-driven>
+		<mvc:message-converters register-defaults="true">
+			<!-- 进行数据处理可以实现可以去除JSON字符的双引号 -->
+			<bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" />
+			<bean class="org.springframework.http.converter.StringHttpMessageConverter" />
+
+			<bean class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter">
+				<property name="supportedMediaTypes">
+					<list>
+						<value>text/html;charset=UTF-8</value>
+						<value>application/json;charset=UTF-8</value>
+					</list>
+				</property>
+				<property name="features">
+					<list>
+						<!-- 输出key时是否使用双引号 -->
+						<value>QuoteFieldNames</value>
+						<!-- 是否输出值为null的字段 -->
+						<!-- <value>WriteMapNullValue</value> -->
+						<!-- 数值字段如果为null,输出为0,而非null -->
+						<value>WriteNullNumberAsZero</value>
+						<!-- List字段如果为null,输出为[],而非null -->
+						<value>WriteNullListAsEmpty</value>
+						<!-- 字符类型字段如果为null,输出为"",而非null -->
+						<value>WriteNullStringAsEmpty</value>
+						<!-- Boolean字段如果为null,输出为false,而非null -->
+						<value>WriteNullBooleanAsFalse</value>
+						<!-- null String不输出 -->
+						<!-- <value>WriteNullStringAsEmpty</value> -->
+						<!-- null String也要输出 -->
+						<value>WriteMapNullValue</value>
+						<!-- Date的日期转换器 -->
+						<value>WriteDateUseDateFormat</value>
+						<value>DisableCircularReferenceDetect</value>
+					</list>
+				</property>
+			</bean>
+		</mvc:message-converters>
+	</mvc:annotation-driven>
+	
+	
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="defaultEncoding">
+			<value>UTF-8</value>
+		</property>
+		<property name="maxUploadSize">
+			<value>10485760</value>
+		</property>
+		<property name="maxInMemorySize">
+			<value>4096</value>
+		</property>
+	</bean>
+
+	<!-- <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"> -->
+	<!-- <property name="messageConverters"> -->
+	<!-- <list> -->
+	<!-- <ref bean="mappingJacksonHttpMessageConverter" /> -->
+	<!-- 可以去除返回数据时多出的双引号 -->
+	<!-- <ref bean="stringHttpMessageConverter" /> -->
+	<!-- </list> -->
+	<!-- </property> -->
+	<!-- </bean> -->
+
+	<!-- <bean id="mappingJacksonHttpMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"> -->
+	<!-- <property name="supportedMediaTypes"> -->
+	<!-- <list> -->
+	<!-- <value>text/html;charset=UTF-8</value> -->
+	<!-- <value>application/json;charset=utf-8</value> -->
+	<!-- <value>text/json;charset=utf-8</value> -->
+	<!-- </list> -->
+	<!-- </property> -->
+	<!-- </bean> -->
+
+	<!-- <bean id="stringHttpMessageConverter" class="org.springframework.http.converter.StringHttpMessageConverter"> -->
+	<!-- <constructor-arg value="UTF-8" /> -->
+	<!-- </bean> -->
+
+	<!-- 没有这句静态资源访问不到，404错误 -->
+	<mvc:default-servlet-handler />
+
+	<!-- <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"> -->
+	<!-- <property name="prefix" value="${web.view.prefix}" /> -->
+	<!-- <property name="suffix" value="${web.view.suffix}" /> -->
+	<!-- </bean> -->
+
+	<!-- 访问静态资源的配置文件 -->
+	<mvc:resources mapping="/pages/**" location="/pages/" />
+</beans>

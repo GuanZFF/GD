@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="/plugins/dataTables/DataTables-1.10.12/media/css/dataTables.bootstrap.min.css" rel="stylesheet">
+<link href="/plugins/sky-forms-pro/skyforms/custom/custom-sky-forms.css" rel="stylesheet">
+<link href="/plugins/sky-forms-pro/skyforms/css/sky-forms.css" rel="stylesheet">
+<link href="/assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+<link href="/css/style.css" rel="stylesheet">
+<link href="/javascript/css/setting.css" rel="stylesheet">
+<style>
+	
+</style>
+</head>
+<body style="overflow:-Scroll;overflow-x:hidden">
+	<div class="container">
+		<!-- NAVBAR-FIXED-TOP属性可以使导航栏固定在顶端 -->
+		<div id="header" class="row navbar navbar-default" role="navigation" style="height: 80px; margin-bottom: 0;" >
+			<div class="col-md-1"></div>
+			<div class="navbar-header col-md-1">
+				<a href="/pages/common/BaseHeader.html" class="navbar-brand"><img alt="LOGO" src="/images/logo.jpg" style="width: 50px; height: 50px;"></a>
+			</div>
+			<ul class="nav navbar-nav col-md-7" id="nav">
+				<li><a href="/pages/common/BaseHeader.html">系统首页</a></li>
+				<li><a href="/pages/common/registerDeal.html">注册管理</a></li>
+				<li><a href="/pages/common/produceDetail.html">商品详情</a></li>
+				<li><a href="/pages/common/registerProduce.html">注册商品</a></li>
+				<li><a href="/pages/common/sysDictManage.html">字典管理</a></li>
+			</ul>
+			<ul class="nav navbar-nav col-md-2" style="border-right: 0;font-size: 19px;">
+				<li class="col-md-4 text-center" id="liSearch"><a href="##"><span class="glyphicon glyphicon-search" id="search"></span></a></li>
+				<li class="col-md-4 text-center" style="padding: 0;"><a href="/pages/common/personInfo.html"><span class="glyphicon glyphicon-user"></span></a></li>
+				<li class="col-md-4 text-center"><a href="/pages/common/setting.html"><span class="glyphicon glyphicon-cog"></span></a></li>
+			</ul>
+			<div class="col-md-1"></div>
+		</div>
+		<div class="row" style="position: absolute; display: none;z-index: 1;" id="search-open">
+			<div class="col-xs-3 col-xs-offset-8 input-group" style="padding: 10px;background-color: white; opacity:1;">
+				<input type="text" class="form-control" placeholder="Search" id="inputSearch"> 
+				<span class="input-group-btn">
+					<button class="btn btn-info" type="button" id="btnSearch">Go</button>
+				</span>
+			</div>
+		</div>
+		<!-- 导航结束 -->
+		<!-- BOOTSTRAP附加导航设计 -->
+		<div class="row navbar navbar-default affix" data-spy="affix" data-offset-top="0" role="navigation" id="nav1" style="padding: 10px 0;z-index: 1;position: relative 0; width: 102%; top: 0; margin-bottom: 0;">
+			<div class="col-md-10 col-md-offset-1">
+				<ul class="nav navbar-nav col-md-12" style="font-size: 20px;" id="dnav">
+				</ul>
+			</div>
+		</div>
+		
+		<!-- BOOTSTRAP的图片轮转设计 -->
+		<div class="row clearfix" style="margin-top: 10px;">
+			<div class="col-md-12 column">
+				<div class="carousel slide" id="carousel-209080">
+					<!-- 轮转指标 -->
+					<ol class="carousel-indicators">
+						<li class="active" data-slide-to="0" data-target="#carousel-209080"></li>
+						<li data-slide-to="1" data-target="#carousel-209080"></li>
+						<li data-slide-to="2" data-target="#carousel-209080"></li>
+						<li data-slide-to="3" data-target="#carousel-209080"></li>
+						<li data-slide-to="4" data-target="#carousel-209080"></li>
+						<li data-slide-to="5" data-target="#carousel-209080"></li>
+					</ol>
+					<!-- 轮转项目 -->
+					<div class="carousel-inner" id="carousel-inner">
+					</div>
+					<!-- 轮转导航 -->
+					<a class="left carousel-control" href="#carousel-209080" data-slide="prev"> 
+						<span class="glyphicon glyphicon-chevron-left"></span>
+					</a> 
+					<a class="right carousel-control" href="#carousel-209080" data-slide="next"> 
+						<span class="glyphicon glyphicon-chevron-right"></span>
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class="row" style="padding-top: 20px;padding-bottom: 20px;">
+			<div class="col-md-1"></div>
+			<div class="col-md-10">
+				<a class="col-md-4 text-center"><img alt="图片" src="/images/demo.jpg" class="img-thumbnail"></a>
+				<a class="col-md-4 text-center"><img alt="图片" src="/images/demo.jpg" class="img-thumbnail"></a>
+				<a class="col-md-4 text-center"><img alt="图片" src="/images/demo.jpg" class="img-thumbnail"></a>
+			</div>
+			<div class="col-md-1"></div>
+		</div>
+		<div class="row" style="background-color: #F2F2F2;padding: 40px;">
+			<div class="row">
+				<h2 style="padding-left: 25px;">热销商品</h2>
+			</div>
+			<div class="row" id="good">
+				<a class="col-md-3 text-center" href="#"><img alt="图片" src="/images/demo.jpg" class="img-thumbnail" id="img-style"></a>
+				<a class="col-md-3 text-center" href="#"><img alt="图片" src="/images/demo.jpg" class="img-thumbnail" id="img-style"></a>
+				<a class="col-md-3 text-center" href="#"><img alt="图片" src="/images/demo.jpg" class="img-thumbnail" id="img-style"></a>
+				<a class="col-md-3 text-center" href="#"><img alt="图片" src="/images/demo.jpg" class="img-thumbnail" id="img-style"></a>
+			</div>
+			<hr>
+			<div class="row">
+				<h2 style="padding-left: 25px;">商家推荐</h2>
+			</div>
+			<div class="row" id="shangjia">
+				<a class="col-md-3 text-center" href="#"><img alt="图片" src="/images/demo.jpg" class="img-thumbnail" id="img-style"></a>
+				<a class="col-md-3 text-center" href="#"><img alt="图片" src="/images/demo.jpg" class="img-thumbnail" id="img-style"></a>
+				<a class="col-md-3 text-center" href="#"><img alt="图片" src="/images/demo.jpg" class="img-thumbnail" id="img-style"></a>
+				<a class="col-md-3 text-center" href="#"><img alt="图片" src="/images/demo.jpg" class="img-thumbnail" id="img-style"></a>
+			</div>
+			<hr>
+			<div class="row">
+				<h2 style="padding-left: 25px;">好友推荐</h2>
+			</div>
+			<div class="row team-v3" id="friendRom">
+				
+			</div>
+		</div>
+		<hr>
+		<!-- 根部设置 -->
+		<div id="footer" class="row" style="background-color: #5E5E5E">
+			<div class="col-md-2 text-right" style="margin: 20px 0;">
+				<a href="#"><img alt="图片" class="img-circle" id="userImg" src="/images/a7.jpg" style="width: 100px;height: 100px;"></a>
+			</div>
+			<div class="col-md-2" style="padding: 45px 0;">
+				<div style="background-color: white;padding: 5px 10px;display: none;border-radius:10px !important;" id="username">
+					<h3 class="#5E5E5E" style="margin: 0px;color: black;" id="usernameh">姓名</h3>
+				</div>
+			</div>
+			<div class="col-md-2 text-center col-md-offset-3" style="padding: 30px 0;">
+				<h3 id="aboutMe" style="color: #000000;">关于我们</h3>
+				<h3 id="recentMessage" style="color: #000000;">最新消息</h3>
+			</div>
+			<div class="col-md-3 text-center">
+				<div class="row" style="margin-top: 30px;">
+					<h3 style="color: #000000;">联系我们</h3>
+					<h3 style="color: #000000;">1234567890</h3>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script src="/plugins/jquery/jquery.min.js"></script>
+<script src="/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="/plugins/dataTables/DataTables-1.10.12/media/js/jquery.dataTables.min.js"></script>
+<script src="/assets/plugins/sky-forms-pro/skyforms/js/jquery.validate.min.js"></script>
+<script src="/assets/plugins/sky-forms-pro/skyforms/js/jquery-ui.min.js"></script>
+<script src="/plugins/layer-master/src/layer.js"></script>
+<script src="/javascript/js/setting.js"></script>
+
+<script>
+	$(document).ready(function() {
+		$('#carousel-209080').carousel({
+			interval : 2000,
+			pause : "hover"
+		});
+		/* 获取轮转结果图片信息 */
+		$.ajax({
+			url : "/PC/listproduceinfoattodaynum",
+			type : "post",
+			dataType : "json",
+			success : function(result) {
+				if (result[0].produceNavImgUrl == '' || result[0].produceNavImgUrl == null) {
+					result[0].produceNavImgUrl = '/images/demo1.jpg';
+				}
+				$('#carousel-inner').append('<div class="item active">'
+					+ '<img alt="' + result[0].produceNavImgUrl + '" src="' + result[0].produceNavImgUrl + '" class="center-block col-md-12" id="navImage"/>'
+					+ '<div class="carousel-option text-center">' + result[0].produceName + '</div>'
+					+ '</div>'
+				);
+				for (var i = 1; i < result.length; i++) {
+					if (result[i].produceNavImgUrl == '' || result[i].produceNavImgUrl == null) {
+						result[i].produceNavImgUrl = '/images/demo1.jpg';
+					}
+					$('#carousel-inner').append('<div class="item">'
+						+ '<img alt="' + result[i].produceNavImgUrl + '" src="' + result[i].produceNavImgUrl + '" class="center-block col-md-12" id="navImage"/>'
+						+ '<div class="carousel-option text-center">' + result[i].produceName + '</div>'
+						+ '</div>'
+					);
+				}
+			},
+			error : function() {
+				console.log("error");
+			}
+		});
+		/* 动态导航设置 */
+		$.ajax({
+			url: '/sysdictcontroller/listsysdictbytype',
+			data: {sysDictType: 'produceType'},
+			type : "post",
+			dataType : "json",
+			success : function(result) {
+				if (result) {
+					for (var i = 0; i < result.length; i++) {
+						$('#dnav').append('<li class="col-md-2 text-center"><a href="##" value="' + result[i].sysDictId + '">' + result[i].sysDictName + '</a></li>');
+					}
+				}
+			}
+		});
+		$('#navImage').on('click', function() {
+			layer.msg($(this).attr('alt'));
+		});
+		
+		$.ajax({
+			url : "/personcontroller/getpersonproduceinfobypersonid",
+			type : "post",
+			data : {"personId" : "123"},
+			dataType : "json",
+			success : function(result) {
+				console.log(result);
+			},
+			error : function() {
+				console.log("error");
+			}
+		});
+		$('.affix').affix({
+			offset : {
+				top : 80
+			}
+		});
+		/* 处理所有的好友推荐 */
+		$('#dnav').on('click', 'li', function() {
+			maximumSaleCommodity($(this).find('a').attr('value'));
+			good($(this).find('a').attr('value'));
+			shangjia($(this).find('a').attr('value'));
+		});
+		function good(produceType) {
+			$('#good').empty();
+			$.ajax({
+				data: {produceType: produceType},
+				url : "/PC/listgood",
+				dataType : "json",
+				type : "post",
+				success : function(result) {
+					if (result) {
+						for (var i = 0; i < result.length; i++) {
+							$('#good').append('<a class="col-md-3 text-center" href="#"><img value="'+ result[i].produceId +'" alt="图片" src="'+ result[i].produceImageUrl +'" class="img-thumbnail" id="img-style"></a>')
+						}
+					}
+				}
+			});
+		}
+		function shangjia(produceType) {
+			$('#shangjia').empty();
+			$.ajax({
+				data: {produceType: produceType},
+				url : "/PC/listshangjia",
+				dataType : "json",
+				type : "post",
+				success : function(result) {
+					if (result) {
+						for (var i = 0; i < result.length; i++) {
+							$('#shangjia').append('<a class="col-md-3 text-center" href="#"><img value="'+ result[i].produceId +'" alt="图片" src="'+ result[i].produceImageUrl +'" class="img-thumbnail" id="img-style"></a>')
+						}
+					}
+				}
+			});
+		}
+		function maximumSaleCommodity(produceType) {
+			$('#friendRom').empty();
+			$.ajax({
+				data: {produceType: produceType},
+				url : "/PC/listfriendrecomcom",
+				dataType : "json",
+				type : "post",
+				success : function(result) {
+					if (result) {
+						for (var i = 0; i < result.length; i++) {
+							$('#friendRom').append('<div class="col-md-3 text-center">'
+								+ '<div class="team-img" style="height: 240px;width: 240px; margin-left: 30px;">'
+								+ '<img class="img-thumbnail" src="'+ result[i].produceImageUrl +'" id="friend1" alt="好友推荐一">'
+								+ '<div class="team-hover">'
+								+ '<span>'+ result[i].produceName +'</span>'
+								+ '<p>'+ result[i].produceDesc +'</p>'
+								+ '<button class="btn btn-info" id="friendDetail1" value="'+ result[i].produceId +'">查看详情</button>'
+								+ '</div>'
+								+ '</div>'
+								+ '</div>'
+							);
+						}	
+					}
+				}
+			});
+		}
+		$('#friendRom').on('click', 'button', function() {
+			location.href = '/pages/common/produceDetail.html?produceId=' + $(this).val();
+		});
+		$('#good, #shangjia').on('click', 'a', function() {
+			location.href = '/pages/common/produceDetail.html?produceId=' + $(this).find('img').attr('value');
+		});
+		/* 设置用户好友的推荐信息 ----------------START*/
+		$.ajax({
+			url: '/PC/listfriendrecommenddata',
+			data: {num: '4'},
+			dataType: 'json',
+			type: 'post',
+			success: function(result) {
+				console.log(result);
+			}
+		});
+		/* 设置用户好友的推荐信息 ----------------END*/
+		/* ------------------------根部设置------------------------ */
+		$.ajax({
+			url : "/usercontroller/getuserdetail",
+			type : "get",
+			dataType : "json",
+			success : function(result) {
+				console.log(result);
+				$('#userImg').attr('src', result.userImg);
+			}
+		});
+		$('#aboutMe').on('click', function() {
+			layer.msg('我们是一个关于电子商务的推荐系统，部分功能静候期待');
+		});
+		$('#recentMessage').on('click', function() {
+			$.ajax({
+				url: '/sysdictcontroller/listsysdictbytype',
+				data: {sysDictType: 'message'},
+				dataType: 'json',
+				type: 'post',
+				success: function(result) {
+					if (result.length == 0) {
+						layer.msg('暂无消息信息！！！', {time: 700});
+					} else {
+						var message = ''
+						for (var i = 0; i < result.length; i++) {
+							message = message + result[i].sysDictName + ';';
+						}
+						layer.msg(message);
+					}
+				}
+			})
+		});
+		/* ------------------------根部设置------------------------ */
+	})
+</script>
+
+</html>
